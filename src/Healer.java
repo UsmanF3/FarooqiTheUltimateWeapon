@@ -15,8 +15,8 @@ public class Healer {
         return heal;
     }
 
-    public void setAttack(int attack) {
-        this.attack = attack;
+    public void upgradeAttack(int amtUpg) {
+        attack += amtUpg;
     }
 
     public void setHeal(int heal) {
