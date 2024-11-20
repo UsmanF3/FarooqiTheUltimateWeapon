@@ -1,6 +1,7 @@
 public class Healer {
     private int attack;
     private int heal;
+    private Player player;
 
     public Healer() {
         attack = 2;
@@ -13,6 +14,10 @@ public class Healer {
 
     public void setAttack(int attack) {
         this.attack = attack;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public int getHeal() {

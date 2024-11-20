@@ -1,6 +1,7 @@
 public class Mage {
     private int attack;
     private int burnAttack;
+    private Player player;
 
     public Mage() {
         attack = 2;
@@ -13,6 +14,10 @@ public class Mage {
 
     public void setAttack(int attack) {
         this.attack = attack;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public int getBurnAttack() {

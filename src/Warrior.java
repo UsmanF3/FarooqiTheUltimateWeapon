@@ -1,6 +1,7 @@
 public class Warrior {
     private int attack;
     private int specialAttack;
+    private Player player;
 
     public Warrior() {
         attack = 2;
@@ -13,6 +14,10 @@ public class Warrior {
 
     public void setAttack(int attack) {
         this.attack = attack;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public int getSpecialAttack() {
