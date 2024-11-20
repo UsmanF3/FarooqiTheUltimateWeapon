@@ -131,17 +131,17 @@ public class GameLogic {
             System.out.println("Player Class: Mage");
             System.out.println("Player Attack Stat: " + mage.getAttack());
             System.out.println("Player Burn Attack Stat: " + mage.getBurnAttack());
-            System.out.println("Player Defense Stat: " + player.getDefense());
+            System.out.println("Player Defend Stat: " + player.getDefendStat());
         } else if (playerClass.equals("Healer")) {
             System.out.println("Player Class: Healer");
             System.out.println("Attack Stat: " + healer.getAttack());
             System.out.println("Heal Stat: " + healer.getHeal());
-            System.out.println("Player Defense Stat: " + player.getDefense());
+            System.out.println("Player Defend Stat: " + player.getDefendStat());
         } else if (playerClass.equals("Warrior")) {
             System.out.println("Player Class: Warrior");
             System.out.println("Attack Stat: " + warrior.getAttack());
             System.out.println("Special Attack Stat: " + warrior.getSpecialAttack());
-            System.out.println("Player Defense Stat: " + player.getDefense());
+            System.out.println("Player Defend Stat: " + player.getDefendStat());
         }
 
     }
@@ -150,16 +150,22 @@ public class GameLogic {
         if (playerClass.equals("Mage")) {
             System.out.println("\nAttack: Is a basic attack that damages the opponent.");
             System.out.println("Your current attack stat is " + mage.getAttack());
+            System.out.println("\nDefend: Is a basic move that will defend against the opponent's attack.");
+            System.out.println("Your current defend stat is " + player.getDefendStat());
             System.out.println("\nBurn Attack: Is a recurring attack that will tick every round.");
             System.out.println("Your current burn attack stat is " + mage.getBurnAttack());
         } else if (playerClass.equals("Warrior")) {
             System.out.println("\nAttack: Is a basic attack that damages the opponent.");
             System.out.println("Your current attack stat is " + warrior.getAttack());
+            System.out.println("\nDefend: Is a basic move that will defend against the opponent's attack.");
+            System.out.println("Your current defend stat is " + player.getDefendStat());
             System.out.println("\nSpecial Attack: Is a heavy attack that will heavily damage the opponent.");
             System.out.println("Your current special attack stat is " + warrior.getSpecialAttack());
         } else {
             System.out.println("\nAttack: Is a basic attack that damages the opponent.");
             System.out.println("Your current attack stat is " + healer.getAttack());
+            System.out.println("\nDefend: Is a basic move that will defend against the opponent's attack.");
+            System.out.println("Your current defend stat is " + player.getDefendStat());
             System.out.println("\nHeal: Is a move that will heal your player.");
             System.out.println("Your current heal stat is " + healer.getHeal());
         }
@@ -177,7 +183,7 @@ public class GameLogic {
             System.out.println("Burn Stat: " + mage.getBurnAttack());
             boolean proper = false;
             while (!proper) {
-                System.out.print("\nWhat stat would you like to update (Attack/Burn/Health/Defense): ");
+                System.out.print("\nWhat stat would you like to update (Attack/Burn/Health/Defend): ");
                 String whatUpg = scan.nextLine();
                 whatUpg = whatUpg.toLowerCase();
                 if (whatUpg.equals("attack")) {
@@ -228,16 +234,16 @@ public class GameLogic {
                     } else {
                         System.out.println("Not a proper input.");
                     }
-                } else if (whatUpg.equals("defense")){
+                } else if (whatUpg.equals("defend")){
                     proper = true;
-                    System.out.println("Defense +1 = 75 Coins. How much would you like to upgrade: ");
+                    System.out.println("Defend +1 = 75 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
                         if (player.getCoins()>=amtUpg*75) {
                             player.setCoins(player.getCoins()-amtUpg*75);
-                            player.setDefense(player.getDefense()+amtUpg);
-                            System.out.println("You have successfully upgraded your defense stat by " + amtUpg + ". Your new defense stat is: " + player.getDefense());
+                            player.setDefendStat(player.getDefendStat()+amtUpg);
+                            System.out.println("You have successfully upgraded your defend stat by " + amtUpg + ". Your new defend stat is: " + player.getDefendStat());
                         } else {
                             System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
                         }
@@ -253,7 +259,7 @@ public class GameLogic {
             System.out.println("Special Attack Stat: " + warrior.getSpecialAttack());
             boolean proper = false;
             while (!proper) {
-                System.out.print("\nWhat stat would you like to update (Attack/Special/Health): ");
+                System.out.print("\nWhat stat would you like to update (Attack/Special/Health/Defend): ");
                 String whatUpg = scan.nextLine();
                 whatUpg = whatUpg.toLowerCase();
                 if (whatUpg.equals("attack")) {
@@ -304,16 +310,16 @@ public class GameLogic {
                     } else {
                         System.out.println("Not a proper input.");
                     }
-                } else if (whatUpg.equals("defense")) {
+                } else if (whatUpg.equals("defend")) {
                     proper = true;
-                    System.out.println("Defense +1 = 75 Coins. How much would you like to upgrade: ");
+                    System.out.println("Defend +1 = 75 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
                         if (player.getCoins()>=amtUpg*75) {
                             player.setCoins(player.getCoins()-amtUpg*75);
-                            player.setDefense(player.getDefense()+amtUpg);
-                            System.out.println("You have successfully upgraded your defense stat by " + amtUpg + ". Your new defense stat is: " + player.getDefense());
+                            player.setDefendStat(player.getDefendStat()+amtUpg);
+                            System.out.println("You have successfully upgraded your defend stat by " + amtUpg + ". Your new defend stat is: " + player.getDefendStat());
                         } else {
                             System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
                         }
@@ -329,7 +335,7 @@ public class GameLogic {
             System.out.println("Heal Stat: " + healer.getHeal());
             boolean proper = false;
             while (!proper) {
-                System.out.print("\nWhat stat would you like to update (Attack/Heal/Health): ");
+                System.out.print("\nWhat stat would you like to update (Attack/Heal/Health/Defend): ");
                 String whatUpg = scan.nextLine();
                 whatUpg = whatUpg.toLowerCase();
                 if (whatUpg.equals("attack")) {
@@ -380,16 +386,16 @@ public class GameLogic {
                     } else {
                         System.out.println("Not a proper input.");
                     }
-                } else if (whatUpg.equals("defense")) {
+                } else if (whatUpg.equals("defend")) {
                     proper = true;
-                    System.out.println("Defense +1 = 75 Coins. How much would you like to upgrade: ");
+                    System.out.println("Defend +1 = 75 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
                         if (player.getCoins()>=amtUpg*75) {
                             player.setCoins(player.getCoins()-amtUpg*75);
-                            player.setDefense(player.getDefense()+amtUpg);
-                            System.out.println("You have successfully upgraded your defense stat by " + amtUpg + ". Your new defense stat is: " + player.getDefense());
+                            player.setDefendStat(player.getDefendStat()+amtUpg);
+                            System.out.println("You have successfully upgraded your defend stat by " + amtUpg + ". Your new defend stat is: " + player.getDefendStat());
                         } else {
                             System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
                         }
