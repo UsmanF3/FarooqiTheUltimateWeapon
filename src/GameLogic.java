@@ -115,7 +115,7 @@ public class GameLogic {
         System.out.println("\nYou have entered level " + level);
         System.out.println("You have encountered an ENEMY!");
         System.out.println("What will you choose to do?");
-        System.out.println("-------Fight Menu-------");
+        System.out.println("\n-------Fight Menu-------");
         System.out.println("1: Attack");
         System.out.println("2: Defend");
         System.out.println("3: Special Move");
