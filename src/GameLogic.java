@@ -95,36 +95,68 @@ public class GameLogic {
             if (choice == 1) {
 
             } else if (choice == 2) {
-
+                playerInfo();
             } else if (choice == 3) {
                 upgradeCharacter();
             } else if (choice == 4) {
-                System.out.println("Your current name is: " + player.getName());
-                System.out.print("What would you like to change it to: ");
-                player.setName(scan.nextLine());
+                changeName();
             } else if (choice == 5) {
-                if (playerClass.equals("Mage")) {
-                    System.out.println("Attack: Is a basic attack that damages the opponent.");
-                    System.out.println("Your current attack stat is " + mage.getAttack());
-                    System.out.println("\nBurn Attack: Is a recurring attack that will tick every round.");
-                    System.out.println("Your current burn attack stat is " + mage.getBurnAttack());
-                } else if (playerClass.equals("Warrior")) {
-                    System.out.println("Attack: Is a basic attack that damages the opponent.");
-                    System.out.println("Your current attack stat is " + warrior.getAttack());
-                    System.out.println("\nSpecial Attack: Is a heavy attack that will heavily damage the opponent.");
-                    System.out.println("Your current special attack stat is " + warrior.getSpecialAttack());
-                } else {
-                    System.out.println("Attack: Is a basic attack that damages the opponent.");
-                    System.out.println("Your current attack stat is " + healer.getAttack());
-                    System.out.println("\nHeal: Is a move that will heal your player.");
-                    System.out.println("Your current heal stat is " + healer.getHeal());
-                }
+                exploreMoves();
             } else if (choice == 6) {
                 System.out.println("This is just the beginning of your journey. See you again soon!");
             } else {
                 System.out.println("Error. Please choose again.");
             }
         }
+    }
+
+    private void playLevel() {
+
+    }
+
+    private void playerInfo() {
+        System.out.println("----------Player Info----------");
+        System.out.println("Player Name: " + player.getName());
+        System.out.println("Player Coins: " + player.getCoins());
+        if (playerClass.equals("Mage")) {
+            System.out.println("Player Class: Mage");
+            System.out.println("Attack Stat: " + mage.getAttack());
+            System.out.println("Burn Attack Stat: " + mage.getBurnAttack());
+        } else if (playerClass.equals("Healer")) {
+            System.out.println("Player Class: Healer");
+            System.out.println("Attack Stat: " + healer.getAttack());
+            System.out.println("Heal Stat: " + healer.getHeal());
+        } else if (playerClass.equals("Warrior")) {
+            System.out.println("Player Class: Warrior");
+            System.out.println("Attack Stat: " + warrior.getAttack());
+            System.out.println("Special Attack Stat: " + warrior.getSpecialAttack());
+        }
+
+    }
+
+    private void exploreMoves() {
+        if (playerClass.equals("Mage")) {
+            System.out.println("\nAttack: Is a basic attack that damages the opponent.");
+            System.out.println("Your current attack stat is " + mage.getAttack());
+            System.out.println("\nBurn Attack: Is a recurring attack that will tick every round.");
+            System.out.println("Your current burn attack stat is " + mage.getBurnAttack());
+        } else if (playerClass.equals("Warrior")) {
+            System.out.println("\nAttack: Is a basic attack that damages the opponent.");
+            System.out.println("Your current attack stat is " + warrior.getAttack());
+            System.out.println("\nSpecial Attack: Is a heavy attack that will heavily damage the opponent.");
+            System.out.println("Your current special attack stat is " + warrior.getSpecialAttack());
+        } else {
+            System.out.println("\nAttack: Is a basic attack that damages the opponent.");
+            System.out.println("Your current attack stat is " + healer.getAttack());
+            System.out.println("\nHeal: Is a move that will heal your player.");
+            System.out.println("Your current heal stat is " + healer.getHeal());
+        }
+    }
+
+    private void changeName() {
+        System.out.println("Your current name is: " + player.getName());
+        System.out.print("What would you like to change it to: ");
+        player.setName(scan.nextLine());
     }
 
     private void upgradeCharacter() {
