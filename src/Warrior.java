@@ -11,8 +11,16 @@ public class Warrior {
         return attack;
     }
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
     public int getSpecialAttack() {
         return specialAttack;
+    }
+
+    public void setSpecialAttack(int specialAttack) {
+        this.specialAttack = specialAttack;
     }
 
     public void upgradeAttack(int amtUpg) {

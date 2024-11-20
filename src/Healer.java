@@ -11,6 +11,10 @@ public class Healer {
         return attack;
     }
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
     public int getHeal() {
         return heal;
     }

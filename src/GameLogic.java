@@ -27,11 +27,11 @@ public class GameLogic {
     private void createObjects() {
         player = new Player(playerClass, name);
         if (playerClass.equals("Mage")) {
-            mage = new Mage();
+            mage = player.getMage();
         } else if (playerClass.equals("Healer")) {
-            healer = new Healer();
+            healer = player.getHealer();
         } else if (playerClass.equals("Warrior")) {
-            warrior = new Warrior();
+            warrior = player.getWarrior();
         }
     }
 
@@ -99,7 +99,7 @@ public class GameLogic {
             } else if (choice == 3) {
                 upgradeCharacter();
             } else if (choice == 4) {
-                System.out.println("Your current name is: " + name);
+                System.out.println("Your current name is: " + player.getName());
                 System.out.print("What would you like to change it to: ");
                 player.setName(scan.nextLine());
             } else if (choice == 5) {
@@ -139,10 +139,35 @@ public class GameLogic {
                 if (whatUpg.equals("attack")) {
                     proper = true;
                     System.out.print("Attack +1 = 25 Coins. How much would you like to upgrade: ");
-                    //add here
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*25) {
+                            player.setCoins(player.getCoins()-amtUpg*25);
+                            mage.setAttack(mage.getAttack()+amtUpg);
+                            System.out.println("You have successfully upgraded your attack stat by " + amtUpg + ". Your new attack stat is: " + mage.getAttack());
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
                 } else if (whatUpg.equals("burn")) {
                     proper = true;
                     System.out.println("Burn +1 = 50 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*50) {
+                            player.setCoins(player.getCoins()-amtUpg*50);
+                            mage.setBurnAttack(mage.getBurnAttack()+amtUpg);
+                            System.out.println("You have successfully upgraded your burn attack stat by " + amtUpg + ". Your new burn attack stat is: " + mage.getBurnAttack());
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
                 } else {
                     System.out.println("Not a correct choice! Please enter again.");
                 }
@@ -150,11 +175,91 @@ public class GameLogic {
         } else if (playerClass.equals("Warrior")) {
             System.out.println("Attack Stat: " + warrior.getAttack());
             System.out.println("Special Attack Stat: " + warrior.getSpecialAttack());
-            System.out.print("\nWhat stat would you like to update (Attack/Special): ");
+            boolean proper = false;
+            while (!proper) {
+                System.out.print("\nWhat stat would you like to update (Attack/Special): ");
+                String whatUpg = scan.nextLine();
+                whatUpg = whatUpg.toLowerCase();
+                if (whatUpg.equals("attack")) {
+                    proper = true;
+                    System.out.print("Attack +1 = 25 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*25) {
+                            player.setCoins(player.getCoins()-amtUpg*25);
+                            warrior.setAttack(warrior.getAttack()+amtUpg);
+                            System.out.println("You have successfully upgraded your attack stat by " + amtUpg + ". Your new attack stat is: " + warrior.getAttack());
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
+                } else if (whatUpg.equals("special")) {
+                    proper = true;
+                    System.out.println("Special +5 = 100 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*100) {
+                            player.setCoins(player.getCoins()-amtUpg*100);
+                            warrior.setSpecialAttack(warrior.getSpecialAttack()+amtUpg);
+                            System.out.println("You have successfully upgraded your special attack stat by " + amtUpg + ". Your new special attack stat is: " + warrior.getSpecialAttack());
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
+                } else {
+                    System.out.println("Not a correct choice! Please enter again.");
+                }
+            }
         } else {
             System.out.println("Attack Stat: " + healer.getAttack());
             System.out.println("Heal Stat: " + healer.getHeal());
-            System.out.print("\nWhat stat would you like to update (Attack/Heal): ");
+            boolean proper = false;
+            while (!proper) {
+                System.out.print("\nWhat stat would you like to update (Attack/Heal): ");
+                String whatUpg = scan.nextLine();
+                whatUpg = whatUpg.toLowerCase();
+                if (whatUpg.equals("attack")) {
+                    proper = true;
+                    System.out.print("Attack +1 = 25 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*25) {
+                            player.setCoins(player.getCoins()-amtUpg*25);
+                            healer.setAttack(healer.getAttack()+amtUpg);
+                            System.out.println("You have successfully upgraded your attack stat by " + amtUpg + ". Your new attack stat is: " + healer.getAttack());
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
+                } else if (whatUpg.equals("heal")) {
+                    proper = true;
+                    System.out.println("Heal +1 = 50 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*50) {
+                            player.setCoins(player.getCoins()-amtUpg*50);
+                            healer.setHeal(healer.getHeal()+amtUpg);
+                            System.out.println("You have successfully upgraded your heal stat by " + amtUpg + ". Your new heal stat is: " + healer.getHeal());
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
+                } else {
+                    System.out.println("Not a correct choice! Please enter again.");
+                }
+            }
         }
     }
 

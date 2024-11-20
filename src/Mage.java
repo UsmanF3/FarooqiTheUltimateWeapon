@@ -11,8 +11,16 @@ public class Mage {
         return attack;
     }
 
+    public void setAttack(int attack) {
+        this.attack = attack;
+    }
+
     public int getBurnAttack() {
         return burnAttack;
+    }
+
+    public void setBurnAttack(int burnAttack) {
+        this.burnAttack = burnAttack;
     }
 
     public void upgradeAttack(int amtUpg) {
