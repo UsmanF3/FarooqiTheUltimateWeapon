@@ -94,7 +94,7 @@ public class GameLogic {
             choice = scan.nextInt();
             scan.nextLine();
             if (choice == 1) {
-
+                playLevel();
             } else if (choice == 2) {
                 playerInfo();
             } else if (choice == 3) {
@@ -112,7 +112,14 @@ public class GameLogic {
     }
 
     private void playLevel() {
-
+        System.out.println("\nYou have entered level " + level);
+        System.out.println("You have encountered an ENEMY!");
+        System.out.println("What will you choose to do?");
+        System.out.println("-------Fight Menu-------");
+        System.out.println("1: Attack");
+        System.out.println("2: Defend");
+        System.out.println("3: Special Move");
+        System.out.println("4: Flee");
     }
 
     private void playerInfo() {
@@ -122,16 +129,19 @@ public class GameLogic {
         System.out.println("Player Health: " + player.getHealth() + "HP");
         if (playerClass.equals("Mage")) {
             System.out.println("Player Class: Mage");
-            System.out.println("Attack Stat: " + mage.getAttack());
-            System.out.println("Burn Attack Stat: " + mage.getBurnAttack());
+            System.out.println("Player Attack Stat: " + mage.getAttack());
+            System.out.println("Player Burn Attack Stat: " + mage.getBurnAttack());
+            System.out.println("Player Defense Stat: " + player.getDefense());
         } else if (playerClass.equals("Healer")) {
             System.out.println("Player Class: Healer");
             System.out.println("Attack Stat: " + healer.getAttack());
             System.out.println("Heal Stat: " + healer.getHeal());
+            System.out.println("Player Defense Stat: " + player.getDefense());
         } else if (playerClass.equals("Warrior")) {
             System.out.println("Player Class: Warrior");
             System.out.println("Attack Stat: " + warrior.getAttack());
             System.out.println("Special Attack Stat: " + warrior.getSpecialAttack());
+            System.out.println("Player Defense Stat: " + player.getDefense());
         }
 
     }
@@ -167,7 +177,7 @@ public class GameLogic {
             System.out.println("Burn Stat: " + mage.getBurnAttack());
             boolean proper = false;
             while (!proper) {
-                System.out.print("\nWhat stat would you like to update (Attack/Burn/Health): ");
+                System.out.print("\nWhat stat would you like to update (Attack/Burn/Health/Defense): ");
                 String whatUpg = scan.nextLine();
                 whatUpg = whatUpg.toLowerCase();
                 if (whatUpg.equals("attack")) {
@@ -212,6 +222,22 @@ public class GameLogic {
                             player.setCoins(player.getCoins()-amtUpg*100);
                             player.setHealth(player.getHealth()+amtUpg);
                             System.out.println("You have successfully upgraded your health stat by " + amtUpg + ". Your new health stat is: " + player.getHealth() + "HP");
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
+                } else if (whatUpg.equals("defense")){
+                    proper = true;
+                    System.out.println("Defense +1 = 75 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*75) {
+                            player.setCoins(player.getCoins()-amtUpg*75);
+                            player.setDefense(player.getDefense()+amtUpg);
+                            System.out.println("You have successfully upgraded your defense stat by " + amtUpg + ". Your new defense stat is: " + player.getDefense());
                         } else {
                             System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
                         }
@@ -278,6 +304,22 @@ public class GameLogic {
                     } else {
                         System.out.println("Not a proper input.");
                     }
+                } else if (whatUpg.equals("defense")) {
+                    proper = true;
+                    System.out.println("Defense +1 = 75 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*75) {
+                            player.setCoins(player.getCoins()-amtUpg*75);
+                            player.setDefense(player.getDefense()+amtUpg);
+                            System.out.println("You have successfully upgraded your defense stat by " + amtUpg + ". Your new defense stat is: " + player.getDefense());
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
                 } else {
                     System.out.println("Not a correct choice! Please enter again.");
                 }
@@ -332,6 +374,22 @@ public class GameLogic {
                             player.setCoins(player.getCoins()-amtUpg*100);
                             player.setHealth(player.getHealth()+amtUpg);
                             System.out.println("You have successfully upgraded your health stat by " + amtUpg + ". Your new health stat is: " + player.getHealth() + "HP");
+                        } else {
+                            System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
+                        }
+                    } else {
+                        System.out.println("Not a proper input.");
+                    }
+                } else if (whatUpg.equals("defense")) {
+                    proper = true;
+                    System.out.println("Defense +1 = 75 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt();
+                    scan.nextLine();
+                    if (amtUpg>=0) {
+                        if (player.getCoins()>=amtUpg*75) {
+                            player.setCoins(player.getCoins()-amtUpg*75);
+                            player.setDefense(player.getDefense()+amtUpg);
+                            System.out.println("You have successfully upgraded your defense stat by " + amtUpg + ". Your new defense stat is: " + player.getDefense());
                         } else {
                             System.out.println("You can't afford to upgrade this much. Come back when you have more coins!");
                         }

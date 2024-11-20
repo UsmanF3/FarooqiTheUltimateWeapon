@@ -2,6 +2,7 @@ public class Player {
     private String playerClass;
     private int coins;
     private int health;
+    private int defense;
     private String name;
     private Mage mage;
     private Warrior warrior;
@@ -11,6 +12,7 @@ public class Player {
         this.playerClass = playerClass;
         coins = 10000;
         health = 20;
+        defense = 2;
         this.name = name;
         if (playerClass.equals("Mage")) {
             mage = new Mage();
@@ -23,6 +25,14 @@ public class Player {
 
     public String getName() {
         return name;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 
     public int getCoins() {
