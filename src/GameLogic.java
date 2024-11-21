@@ -112,14 +112,61 @@ public class GameLogic {
     }
 
     private void playLevel() {
+        int choice = -1;
+        int levelEnemy = (int) (Math.random()*3) + level;
+        enemy = new Enemy(level);
         System.out.println("\nYou have entered level " + level);
-        System.out.println("You have encountered an ENEMY!");
-        System.out.println("What will you choose to do?");
-        System.out.println("\n-------Fight Menu-------");
-        System.out.println("1: Attack");
-        System.out.println("2: Defend");
-        System.out.println("3: Special Move");
-        System.out.println("4: Flee");
+        System.out.println("You have encountered a level " + levelEnemy + " ENEMY!");
+        while (choice != 4) {
+            System.out.println("What will you choose to do?");
+            System.out.println("\n-------Fight Menu-------");
+            System.out.println("1: Attack");
+            System.out.println("2: Defend");
+            System.out.println("3: Special Move");
+            System.out.println("4: Flee");
+            System.out.print("Fight Option #:");
+            choice = scan.nextInt();
+            scan.nextLine();
+            int randomDiff = (int) (Math.random()*3) - 1;
+            int randomEnemyDiff = (int) (Math.random()*3) - 1;
+            int randomEnemyDamageDiff = (int) (Math.random()*3) - 1;
+            if (choice == 1) {
+                if (playerClass.equals("Mage")) {
+                    int amtHit = mage.getAttack() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
+                        System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You have successfully attacked the enemy for " + (amtHit+ enemy.defend) + " health!");
+                        if (enemy.getHealth()<=0) {
+                            enemy = null;
+                            System.out.println("The enemy is DEFEATED! Well Done!");
+                        }
+                    } else if (randomEnemyDiff == 0) {
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        System.out.println("The enemy STRIKES back! You've been hit for " + randomEnemyDamageDiff);
+                        System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        if (enemy.getHealth()<=0) {
+                            enemy = null;
+                            System.out.println("The enemy is DEFEATED! Well Done!");
+                        }
+                    } else {
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        if (enemy.getHealth()<=0) {
+                            enemy = null;
+                            System.out.println("The enemy is DEFEATED! Well Done!");
+                        }
+                    }
+
+
+                } else if (playerClass.equals("Healer")) {
+
+                } else if (playerClass.equals("Warrior")) {
+
+                }
+            }
+        }
+
     }
 
     private void playerInfo() {
