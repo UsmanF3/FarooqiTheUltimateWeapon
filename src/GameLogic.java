@@ -147,10 +147,16 @@ public class GameLogic {
                         if (enemy.getHealth()<=0) {
                             enemy = null;
                             System.out.println("\nThe enemy is DEFEATED! Well Done!");
+                            int coinsAdd = (int) ((Math.random()*5)+8)*level;
+                            player.setCoins(player.getCoins() + coinsAdd);
                             level++;
+                            System.out.println("You got " + coinsAdd + " coins!");
+                            System.out.println("You have unlocked level " + level + "!");
+                            resetPlayer(resetHealth);
                             break;
                         } else if (player.getHealth()<=0) {
                             System.out.println("\nYou have been DEFEATED. Better luck next time!");
+                            resetPlayer(resetHealth);
                             break;
                         }
                     } else if (randomEnemyDiff == 0) {
@@ -164,10 +170,16 @@ public class GameLogic {
                         if (enemy.getHealth()<=0) {
                             enemy = null;
                             System.out.println("\nThe enemy is DEFEATED! Well Done!");
+                            int coinsAdd = (int) ((Math.random()*5)+8)*level;
+                            player.setCoins(player.getCoins() + coinsAdd);
                             level++;
+                            System.out.println("You got " + coinsAdd + " coins!");
+                            System.out.println("You have unlocked level " + level + "!");
+                            resetPlayer(resetHealth);
                             break;
                         } else if (player.getHealth()<=0) {
                             System.out.println("\nYou have been DEFEATED. Better luck next time!");
+                            resetPlayer(resetHealth);
                             break;
                         }
                     } else if (randomEnemyDiff == 1){
@@ -187,10 +199,16 @@ public class GameLogic {
                         if (enemy.getHealth()<=0) {
                             enemy = null;
                             System.out.println("\nThe enemy is DEFEATED! Well Done!");
+                            int coinsAdd = (int) ((Math.random()*5)+8)*level;
+                            player.setCoins(player.getCoins() + coinsAdd);
                             level++;
+                            System.out.println("You got " + coinsAdd + " coins!");
+                            System.out.println("You have unlocked level " + level + "!");
+                            resetPlayer(resetHealth);
                             break;
                         } else if (player.getHealth()<=0) {
                             System.out.println("\nYou have been DEFEATED. Better luck next time!");
+                            resetPlayer(resetHealth);
                             break;
                         }
                     }
