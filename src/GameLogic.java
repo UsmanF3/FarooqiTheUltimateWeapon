@@ -263,7 +263,7 @@ public class GameLogic {
     private void playerInfo() {
         System.out.println("----------Player Info----------");
         System.out.println("Player Name: " + player.getName());
-        System.out.println("Player Coins: " + player.getCoins());
+        System.out.println("Player Coins: " + player.getCoins() + " Coins");
         System.out.println("Player Health: " + player.getHealth() + "HP");
         if (playerClass.equals("Mage")) {
             System.out.println("Player Class: Mage");
