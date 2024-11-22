@@ -1,8 +1,8 @@
 public class Enemy {
-    public int attack;
-    public int specialAttack;
-    public int health;
-    public int defend;
+    private int attack;
+    private int specialAttack;
+    private int health;
+    private int defend;
 
     public Enemy() {
         attack = 1;

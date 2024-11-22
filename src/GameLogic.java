@@ -144,23 +144,8 @@ public class GameLogic {
                     if (randomEnemyDiff == -1) {
                         enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
                         System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
-                        System.out.println("You have successfully attacked the enemy for " + (amtHit - enemy.defend) + " health!");
+                        System.out.println("You have successfully attacked the enemy for " + (amtHit - enemy.getDefend()) + " health!");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
-                        if (enemy.getHealth()<=0) {
-                            enemy = null;
-                            System.out.println("\nThe enemy is DEFEATED! Well Done!");
-                            int coinsAdd = (int) ((Math.random()*5)+8)*level;
-                            player.setCoins(player.getCoins() + coinsAdd);
-                            level++;
-                            System.out.println("You got " + coinsAdd + " coins!");
-                            System.out.println("You have unlocked level " + level + "!");
-                            resetPlayer(resetHealth);
-                            break;
-                        } else if (player.getHealth()<=0) {
-                            System.out.println("\nYou have been DEFEATED. Better luck next time!");
-                            resetPlayer(resetHealth);
-                            break;
-                        }
                     } else if (randomEnemyDiff == 0) {
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
@@ -169,21 +154,6 @@ public class GameLogic {
                         System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
-                        if (enemy.getHealth()<=0) {
-                            enemy = null;
-                            System.out.println("\nThe enemy is DEFEATED! Well Done!");
-                            int coinsAdd = (int) ((Math.random()*5)+8)*level;
-                            player.setCoins(player.getCoins() + coinsAdd);
-                            level++;
-                            System.out.println("You got " + coinsAdd + " coins!");
-                            System.out.println("You have unlocked level " + level + "!");
-                            resetPlayer(resetHealth);
-                            break;
-                        } else if (player.getHealth()<=0) {
-                            System.out.println("\nYou have been DEFEATED. Better luck next time!");
-                            resetPlayer(resetHealth);
-                            break;
-                        }
                     } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
@@ -198,28 +168,67 @@ public class GameLogic {
                             System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         }
-                        if (enemy.getHealth()<=0) {
-                            enemy = null;
-                            System.out.println("\nThe enemy is DEFEATED! Well Done!");
-                            int coinsAdd = (int) ((Math.random()*5)+8)*level;
-                            player.setCoins(player.getCoins() + coinsAdd);
-                            level++;
-                            System.out.println("You got " + coinsAdd + " coins!");
-                            System.out.println("You have unlocked level " + level + "!");
-                            resetPlayer(resetHealth);
-                            break;
-                        } else if (player.getHealth()<=0) {
-                            System.out.println("\nYou have been DEFEATED. Better luck next time!");
-                            resetPlayer(resetHealth);
-                            break;
+                    }
+                } else if (playerClass.equals("Healer")) {
+                    int amtHit = healer.getAttack() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
+                        System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You have successfully attacked the enemy for " + (amtHit - enemy.getDefend()) + " health!");
+                        System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                        System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 1){
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                        System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
+                        } else {
+                            System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         }
                     }
-
-
-                } else if (playerClass.equals("Healer")) {
-
                 } else if (playerClass.equals("Warrior")) {
-
+                    int amtHit = warrior.getAttack() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
+                        System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You have successfully attacked the enemy for " + (amtHit - enemy.getDefend()) + " health!");
+                        System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                        System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 1){
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                        System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
+                        } else {
+                            System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
+                        }
+                    }
                 }
             } else if (choice == 2) {
 
@@ -230,6 +239,21 @@ public class GameLogic {
             }
             if (choice == 4) {
                 System.out.println("You have fled. Better luck next time!");
+            }
+            if (enemy.getHealth()<=0) {
+                enemy = null;
+                System.out.println("\nThe enemy is DEFEATED! Well Done!");
+                int coinsAdd = (int) ((Math.random()*5)+8)*level;
+                player.setCoins(player.getCoins() + coinsAdd);
+                level++;
+                System.out.println("You got " + coinsAdd + " coins!");
+                System.out.println("You have unlocked level " + level + "!");
+                resetPlayer(resetHealth);
+                break;
+            } else if (player.getHealth()<=0) {
+                System.out.println("\nYou have been DEFEATED. Better luck next time!");
+                resetPlayer(resetHealth);
+                break;
             }
 
         }
