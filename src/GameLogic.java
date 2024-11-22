@@ -120,7 +120,7 @@ public class GameLogic {
         int resetHealth = player.getHealth();
         int levelEnemy = (int) (Math.random()*3) + level;
         enemy = new Enemy(level);
-        System.out.println("\nYou have entered level " + level);
+        System.out.println("You have entered level " + level);
         System.out.println("You have encountered a level " + levelEnemy + " ENEMY!");
         while (choice != 4) {
             System.out.println("What will you choose to do?");
@@ -146,7 +146,11 @@ public class GameLogic {
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         if (enemy.getHealth()<=0) {
                             enemy = null;
-                            System.out.println("The enemy is DEFEATED! Well Done!");
+                            System.out.println("\nThe enemy is DEFEATED! Well Done!");
+                            level++;
+                            break;
+                        } else if (player.getHealth()<=0) {
+                            System.out.println("\nYou have been DEFEATED. Better luck next time!");
                             break;
                         }
                     } else if (randomEnemyDiff == 0) {
@@ -159,10 +163,11 @@ public class GameLogic {
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         if (enemy.getHealth()<=0) {
                             enemy = null;
-                            System.out.println("The enemy is DEFEATED! Well Done!");
+                            System.out.println("\nThe enemy is DEFEATED! Well Done!");
+                            level++;
                             break;
                         } else if (player.getHealth()<=0) {
-                            System.out.println("You have been DEFEATED. Better luck next time!");
+                            System.out.println("\nYou have been DEFEATED. Better luck next time!");
                             break;
                         }
                     } else if (randomEnemyDiff == 1){
@@ -171,14 +176,22 @@ public class GameLogic {
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
                         int doesItHit = (int) (Math.random()*3) - 1;
                         if (doesItHit == 0) {
-                            System.out.println("The enemy SPECIAL STRIKES back and it LANDED!");
-                            //add here
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         } else {
                             System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         }
                         if (enemy.getHealth()<=0) {
                             enemy = null;
-                            System.out.println("The enemy is DEFEATED! Well Done!");
+                            System.out.println("\nThe enemy is DEFEATED! Well Done!");
+                            level++;
+                            break;
+                        } else if (player.getHealth()<=0) {
+                            System.out.println("\nYou have been DEFEATED. Better luck next time!");
+                            break;
                         }
                     }
 
@@ -263,6 +276,8 @@ public class GameLogic {
         if (playerClass.equals("Mage")) {
             System.out.println("Attack Stat: " + mage.getAttack());
             System.out.println("Burn Stat: " + mage.getBurnAttack());
+            System.out.println("Health Stat: " + player.getHealth());
+            System.out.println("Defend Stat: " + player.getDefendStat());
             boolean proper = false;
             while (!proper) {
                 System.out.print("\nWhat stat would you like to update (Attack/Burn/Health/Defend): ");
@@ -286,7 +301,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("burn")) {
                     proper = true;
-                    System.out.println("Burn +1 = 50 Coins. How much would you like to upgrade: ");
+                    System.out.print("Burn +1 = 50 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -302,7 +317,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("health")) {
                     proper = true;
-                    System.out.println("Health +1 = 100 Coins. How much would you like to upgrade: ");
+                    System.out.print("Health +1 = 100 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -318,7 +333,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("defend")){
                     proper = true;
-                    System.out.println("Defend +1 = 75 Coins. How much would you like to upgrade: ");
+                    System.out.print("Defend +1 = 75 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -339,6 +354,8 @@ public class GameLogic {
         } else if (playerClass.equals("Warrior")) {
             System.out.println("Attack Stat: " + warrior.getAttack());
             System.out.println("Special Attack Stat: " + warrior.getSpecialAttack());
+            System.out.println("Health Stat: " + player.getHealth());
+            System.out.println("Defend Stat: " + player.getDefendStat());
             boolean proper = false;
             while (!proper) {
                 System.out.print("\nWhat stat would you like to update (Attack/Special/Health/Defend): ");
@@ -362,7 +379,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("special")) {
                     proper = true;
-                    System.out.println("Special Attack +5 = 100 Coins. How much would you like to upgrade: ");
+                    System.out.print("Special Attack +5 = 100 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -378,7 +395,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("health")) {
                     proper = true;
-                    System.out.println("Health +1 = 100 Coins. How much would you like to upgrade: ");
+                    System.out.print("Health +1 = 100 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -394,7 +411,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("defend")) {
                     proper = true;
-                    System.out.println("Defend +1 = 75 Coins. How much would you like to upgrade: ");
+                    System.out.print("Defend +1 = 75 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -415,6 +432,8 @@ public class GameLogic {
         } else {
             System.out.println("Attack Stat: " + healer.getAttack());
             System.out.println("Heal Stat: " + healer.getHeal());
+            System.out.println("Health Stat: " + player.getHealth());
+            System.out.println("Defend Stat: " + player.getDefendStat());
             boolean proper = false;
             while (!proper) {
                 System.out.print("\nWhat stat would you like to update (Attack/Heal/Health/Defend): ");
@@ -438,7 +457,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("heal")) {
                     proper = true;
-                    System.out.println("Heal +1 = 50 Coins. How much would you like to upgrade: ");
+                    System.out.print("Heal +1 = 50 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -454,7 +473,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("health")) {
                     proper = true;
-                    System.out.println("Health +1 = 100 Coins. How much would you like to upgrade: ");
+                    System.out.print("Health +1 = 100 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
@@ -470,7 +489,7 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("defend")) {
                     proper = true;
-                    System.out.println("Defend +1 = 75 Coins. How much would you like to upgrade: ");
+                    System.out.print("Defend +1 = 75 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
