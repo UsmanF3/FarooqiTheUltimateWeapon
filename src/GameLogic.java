@@ -21,7 +21,6 @@ public class GameLogic {
         introduce();
         createObjects();
         explain();
-        mainMenu();
         chooseMenu();
     }
 
@@ -73,11 +72,10 @@ public class GameLogic {
         System.out.println();
         System.out.println("You will have to defeat many enemies in order to achieve your goal and get the ultimate weapon.");
         System.out.println("For now, you may start your journey at level one. You will now be redirected to the main menu.");
-        System.out.println();
     }
 
     private void mainMenu() {
-        System.out.println("----------Main Menu----------");
+        System.out.println("\n----------Main Menu----------");
         System.out.println("1: Play Level " + level);
         System.out.println("2: View Player Info");
         System.out.println("3: Upgrade your Player");
@@ -90,9 +88,11 @@ public class GameLogic {
 
     private void chooseMenu() {
         while (choice != 6) {
+            mainMenu();
             System.out.print("\nChoice #: ");
             choice = scan.nextInt();
             scan.nextLine();
+            System.out.println();
             if (choice == 1) {
                 playLevel();
             } else if (choice == 2) {
@@ -129,8 +129,9 @@ public class GameLogic {
             System.out.println("2: Defend");
             System.out.println("3: Special Move");
             System.out.println("4: Flee");
-            System.out.print("Fight Option #:");
+            System.out.print("\nFight Option #: ");
             choice = scan.nextInt();
+            System.out.println();
             scan.nextLine();
             int randomDiff = (int) (Math.random()*3) - 1;
             int randomEnemyDiff = (int) (Math.random()*3) - 1;
@@ -164,7 +165,7 @@ public class GameLogic {
                             System.out.println("You have been DEFEATED. Better luck next time!");
                             break;
                         }
-                    } else {
+                    } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
@@ -187,7 +188,17 @@ public class GameLogic {
                 } else if (playerClass.equals("Warrior")) {
 
                 }
+            } else if (choice == 2) {
+
+            } else if (choice == 3) {
+
+            } else if (choice != 4){
+                System.out.println("Not a proper fight option. Please choose again.");
             }
+            if (choice == 4) {
+                System.out.println("You have fled. Better luck next time!");
+            }
+
         }
 
     }
@@ -218,21 +229,21 @@ public class GameLogic {
 
     private void exploreMoves() {
         if (playerClass.equals("Mage")) {
-            System.out.println("\nAttack: Is a basic attack that damages the opponent.");
+            System.out.println("Attack: Is a basic attack that damages the opponent.");
             System.out.println("Your current attack stat is " + mage.getAttack());
             System.out.println("\nDefend: Is a basic move that will defend against the opponent's attack.");
             System.out.println("Your current defend stat is " + player.getDefendStat());
             System.out.println("\nBurn Attack: Is a recurring attack that will tick every round.");
             System.out.println("Your current burn attack stat is " + mage.getBurnAttack());
         } else if (playerClass.equals("Warrior")) {
-            System.out.println("\nAttack: Is a basic attack that damages the opponent.");
+            System.out.println("Attack: Is a basic attack that damages the opponent.");
             System.out.println("Your current attack stat is " + warrior.getAttack());
             System.out.println("\nDefend: Is a basic move that will defend against the opponent's attack.");
             System.out.println("Your current defend stat is " + player.getDefendStat());
             System.out.println("\nSpecial Attack: Is a heavy attack that will heavily damage the opponent.");
             System.out.println("Your current special attack stat is " + warrior.getSpecialAttack());
         } else {
-            System.out.println("\nAttack: Is a basic attack that damages the opponent.");
+            System.out.println("Attack: Is a basic attack that damages the opponent.");
             System.out.println("Your current attack stat is " + healer.getAttack());
             System.out.println("\nDefend: Is a basic move that will defend against the opponent's attack.");
             System.out.println("Your current defend stat is " + player.getDefendStat());
@@ -245,6 +256,7 @@ public class GameLogic {
         System.out.println("Your current name is: " + player.getName());
         System.out.print("What would you like to change it to: ");
         player.setName(scan.nextLine());
+        System.out.println("You have successfully changed your name to: " + player.getName());
     }
 
     private void upgradeCharacter() {
