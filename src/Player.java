@@ -10,7 +10,7 @@ public class Player {
 
     public Player(String playerClass, String name) {
         this.playerClass = playerClass;
-        coins = 10000;
+        coins = 50;
         health = 20;
         defendStat = 2;
         this.name = name;

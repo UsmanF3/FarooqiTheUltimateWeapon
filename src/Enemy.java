@@ -15,7 +15,7 @@ public class Enemy {
         attack = 1 + level ;
         defend = level;
         specialAttack = 3+level;
-        health = 10 + (level*3);
+        health = 15 + (level*(int)(Math.random()*5)+1);
     }
 
     public int getHealth() {

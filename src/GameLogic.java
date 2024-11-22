@@ -118,6 +118,8 @@ public class GameLogic {
     private void playLevel() {
         int choice = -1;
         int resetHealth = player.getHealth();
+        resetHealth++;
+        resetHealth--;
         int levelEnemy = (int) (Math.random()*3) + level;
         enemy = new Enemy(level);
         System.out.println("You have entered level " + level);
