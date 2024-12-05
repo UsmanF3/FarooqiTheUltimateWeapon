@@ -319,7 +319,7 @@ public class GameLogic {
                 }
             } else if (choice == 3) {
                 if (!used) {
-                    used = true; //add here
+                    used = true;
                     if (playerClass.equals("Mage")) {
                         if (randomEnemyDiff == -1) {
                             int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
@@ -345,57 +345,68 @@ public class GameLogic {
                             }
                         }
                     } else if (playerClass.equals("Healer")) {
-                        int amtDefend = player.getDefendStat() + randomDiff;
                         if (randomEnemyDiff == -1) {
-                            int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff-amtDefend;
-                            if (enemyAmtHit<0)
-                                enemyAmtHit=0;
+                            int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                            player.setHealth(player.getHealth()+healer.getHeal());
                             player.setHealth(player.getHealth()-enemyAmtHit);
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
-                            System.out.println("The enemy STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
+                            System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
+                            System.out.println("Your healing essence is in the air!");
+                            System.out.println("The enemy STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
-                            System.out.println("But the enemy also DEFENDED! Nothing happened!");
+                            player.setHealth(player.getHealth()+healer.getHeal());
+                            System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
+                            System.out.println("Your healing essence is in the air!");
+                            System.out.println("The enemy defended but it did NOTHING!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 1){
-                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
-                            if (enemySpecialHit<0)
-                                enemySpecialHit = 0;
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
+                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                            player.setHealth(player.getHealth()+healer.getHeal());
+                            System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
+                            System.out.println("Your healing essence is in the air!");
                             int doesItHit = (int) (Math.random()*3) - 1;
                             if (doesItHit == 0) {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
-                                System.out.println("The enemy SPECIAL STRIKES back and it LANDED! But since you defended, You've been hit for " + enemySpecialHit + " damage instead of " + (enemySpecialHit+amtDefend) + "!");
+                                System.out.println("The enemy SPECIAL STRIKES and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                                 System.out.println("You are now on " + player.getHealth() + "HP");
                             } else {
-                                System.out.println("The enemy SPECIAL STRIKES back but it MISSED! Nothing happened!");
+                                System.out.println("The enemy SPECIAL STRIKES but it MISSED!");
+                                System.out.println("You are now on " + player.getHealth() + "HP");
                             }
                         }
                     } else if (playerClass.equals("Warrior")) {
-                        int amtDefend = player.getDefendStat() + randomDiff;
+                        int specialAmtHit = warrior.getSpecialAttack()+randomDiff;
                         if (randomEnemyDiff == -1) {
-                            int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff-amtDefend;
-                            if (enemyAmtHit<0)
-                                enemyAmtHit=0;
+                            int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
                             player.setHealth(player.getHealth()-enemyAmtHit);
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
-                            System.out.println("The enemy STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
+                            enemy.setHealth(enemy.getHealth()-specialAmtHit);
+                            System.out.println("You have successfully used your SPECIAL ATTACK! You've hit the enemy for " + specialAmtHit + " damage!");
+                            System.out.println("The enemy is BLEEDING!");
+                            System.out.println("The enemy STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
-                            System.out.println("But the enemy also DEFENDED! Nothing happened!");
+                            enemy.setHealth(enemy.getHealth()-specialAmtHit);
+                            System.out.println("You have successfully used your SPECIAL ATTACK!");
+                            System.out.println("The enemy defended but you BROKE his BLOCK!  You've hit the enemy for " + specialAmtHit + " damage!");
+                            System.out.println("The enemy is BLEEDING!");
+                            System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         } else if (randomEnemyDiff == 1){
-                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
+                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
                             if (enemySpecialHit<0)
                                 enemySpecialHit = 0;
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
+                            enemy.setHealth(enemy.getHealth()-specialAmtHit);
+                            System.out.println("You have successfully used your SPECIAL ATTACK! You've hit the enemy for " + specialAmtHit + " damage!");
+                            System.out.println("The enemy is BLEEDING!");
                             int doesItHit = (int) (Math.random()*3) - 1;
                             if (doesItHit == 0) {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
-                                System.out.println("The enemy SPECIAL STRIKES back and it LANDED! But since you defended, You've been hit for " + enemySpecialHit + " damage instead of " + (enemySpecialHit+amtDefend) + "!");
+                                System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                                 System.out.println("You are now on " + player.getHealth() + "HP");
+                                System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                             } else {
-                                System.out.println("The enemy SPECIAL STRIKES back but it MISSED! Nothing happened!");
+                                System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                                System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                             }
                         }
                     }
@@ -413,14 +424,40 @@ public class GameLogic {
                 break;
             }
             if (used&&playerClass.equals("Mage")&&notCheese) {
-                if (hitCounter<=2) {
+                if (hitCounter<=4) {
                     hitCounter++;
                     enemy.setHealth(enemy.getHealth()-mage.getBurnAttack());
                     System.out.println("\nThe enemy has been BURNED for " + mage.getBurnAttack() + "HP");
                     System.out.println("The enemy stands on " + enemy.getHealth() + "HP!");
-                } else if (hitCounter==3){
+                } else if (hitCounter==5){
                     if (!said) {
                         System.out.println("The burn has worn OFF!");
+                        said = true;
+                    }
+                }
+            }
+            if (used&&playerClass.equals("Warrior")&&notCheese) {
+                if (hitCounter<=1) {
+                    hitCounter++;
+                    enemy.setHealth(enemy.getHealth()-(warrior.getAttack()/2));
+                    System.out.println("\nThe enemy bled " + (warrior.getAttack()/2) + "HP");
+                    System.out.println("The enemy stands on " + enemy.getHealth() + "HP!");
+                } else if (hitCounter==2){
+                    if (!said) {
+                        System.out.println("The wound has healed!");
+                        said = true;
+                    }
+                }
+            }
+            if (used&&playerClass.equals("Healer")&&notCheese) {
+                if (hitCounter<=2) {
+                    hitCounter++;
+                    player.setHealth(player.getHealth()+(player.getHealth()/3));
+                    System.out.println("\nYour healing essence has healed you for " + (player.getHealth()/3) + "HP");
+                    System.out.println("You are now on " + (player.getHealth()/3) + "HP!");
+                } else if (hitCounter==3){
+                    if (!said) {
+                        System.out.println("The healing essence has dispersed!");
                         said = true;
                     }
                 }

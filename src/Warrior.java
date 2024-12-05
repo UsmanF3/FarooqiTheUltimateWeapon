@@ -5,7 +5,7 @@ public class Warrior {
 
     public Warrior() {
         attack = 2;
-        specialAttack = 5;
+        specialAttack = 4;
     }
 
     public int getAttack() {
