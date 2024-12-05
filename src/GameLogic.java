@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class GameLogic {
     private String playerClass;
     private int level;
+    private String bosskey;
+    private String ultBook;
     private String name;
     private Player player;
     private Mage mage;
@@ -13,6 +15,8 @@ public class GameLogic {
     public GameLogic() {
         level = 1;
         name = "";
+        bosskey = null;
+        ultBook = null;
     }
 
     Scanner scan = new Scanner(System.in);
@@ -79,9 +83,10 @@ public class GameLogic {
         System.out.println("1: Play Level " + level);
         System.out.println("2: View Player Info");
         System.out.println("3: Upgrade your Player");
-        System.out.println("4: Change Name");
-        System.out.println("5: Explore Moves");
-        System.out.println("6: Quit");
+        System.out.println("4: Open Inventory");
+        System.out.println("5: Change Name");
+        System.out.println("6: Explore Moves");
+        System.out.println("7: Quit");
     }
 
     int choice = -1;
@@ -100,10 +105,12 @@ public class GameLogic {
             } else if (choice == 3) {
                 upgradeCharacter();
             } else if (choice == 4) {
-                changeName();
+                openInventory();
             } else if (choice == 5) {
-                exploreMoves();
+                changeName();
             } else if (choice == 6) {
+                exploreMoves();
+            } else if (choice == 7) {
                 System.out.println("This is just the beginning of your journey. See you again soon!");
             } else {
                 System.out.println("Error. Please choose again.");
@@ -503,7 +510,58 @@ public class GameLogic {
             System.out.println("Special Attack Stat: " + warrior.getSpecialAttack());
             System.out.println("Player Defend Stat: " + player.getDefendStat());
         }
+    }
 
+    private void openInventory() {
+        System.out.println("--------Inventory--------");
+        System.out.println("1. Coins: " + player.getCoins());
+        if (playerClass.equals("Mage")) {
+            System.out.println("2. Magic Spellbook");
+        } else if (playerClass.equals("Healer")) {
+            System.out.println("2. Wand");
+        } else if (playerClass.equals("Warrior")){
+            System.out.println("2. Sword and Shield");
+        }
+        System.out.println("3. Pocket Watch");
+        if (bosskey!=null)
+            System.out.println("4. Boss Portal Key");
+        if (ultBook!=null)
+            System.out.println("5. The Ultimate Book");
+        System.out.print("\nWhich # item would you like to interact with: ");
+        int itmChoice = scan.nextInt();
+        scan.nextLine();
+        System.out.println();
+        if (itmChoice==1) {
+            if (player.getCoins()>0) {
+                System.out.println("Shiny Golden Coins. Looks like they could be valuable.");
+            } else {
+                System.out.println("There's nothing in the coin pouch!");
+            }
+        } else if (itmChoice==2) {
+            if (playerClass.equals("Mage")) {
+                System.out.println("A magical spellbook with powers beyond that of a regular human..");
+            } else if (playerClass.equals("Healer")) {
+                System.out.println("A strange looking wand forged from twisted vines. It's core is glowing.");
+            } else if (playerClass.equals("Warrior")){
+                System.out.println("An extremely sharp sword paired with an extremely sturdy shield. Capable of inflicting much harm.");
+            }
+        } else if (itmChoice==3) {
+            System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1822.");
+        } else if (itmChoice==4) {
+            if (bosskey!=null) {
+                System.out.println("???");
+            } else {
+                System.out.println("Invalid option!");
+            }
+        } else if (itmChoice==5) {
+            if (ultBook!=null) {
+                System.out.println("???");
+            } else {
+                System.out.println("Invalid option!");
+            }
+        } else {
+            System.out.println("Invalid option!");
+        }
     }
 
     private void exploreMoves() {
