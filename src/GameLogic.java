@@ -431,7 +431,7 @@ public class GameLogic {
                     System.out.println("The enemy stands on " + enemy.getHealth() + "HP!");
                 } else if (hitCounter==5){
                     if (!said) {
-                        System.out.println("The burn has worn OFF!");
+                        System.out.println("\nThe burn has worn OFF!");
                         said = true;
                     }
                 }
@@ -444,7 +444,7 @@ public class GameLogic {
                     System.out.println("The enemy stands on " + enemy.getHealth() + "HP!");
                 } else if (hitCounter==2){
                     if (!said) {
-                        System.out.println("The wound has healed!");
+                        System.out.println("\nThe wound has healed!");
                         said = true;
                     }
                 }
@@ -452,12 +452,12 @@ public class GameLogic {
             if (used&&playerClass.equals("Healer")&&notCheese) {
                 if (hitCounter<=2) {
                     hitCounter++;
-                    player.setHealth(player.getHealth()+(player.getHealth()/3));
-                    System.out.println("\nYour healing essence has healed you for " + (player.getHealth()/3) + "HP");
-                    System.out.println("You are now on " + (player.getHealth()/3) + "HP!");
+                    player.setHealth(player.getHealth()+(healer.getHeal()/3));
+                    System.out.println("\nYour healing essence has healed you for " + (healer.getHeal()/3) + "HP");
+                    System.out.println("You are now on " + player.getHealth() + "HP!");
                 } else if (hitCounter==3){
                     if (!said) {
-                        System.out.println("The healing essence has dispersed!");
+                        System.out.println("\nThe healing essence has dispersed!");
                         said = true;
                     }
                 }
