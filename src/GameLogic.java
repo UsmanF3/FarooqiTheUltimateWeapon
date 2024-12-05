@@ -119,6 +119,7 @@ public class GameLogic {
         int choice = -1;
         int hitCounter = 0;
         boolean used = false;
+        boolean said = false;
         int resetHealth = player.getHealth();
         resetHealth++;
         resetHealth--;
@@ -127,7 +128,7 @@ public class GameLogic {
         System.out.println("You have entered level " + level);
         System.out.println("You have encountered a level " + levelEnemy + " ENEMY!");
         while (choice != 4) {
-            System.out.println("What will you choose to do?");
+            System.out.println("\nWhat will you choose to do?");
             System.out.println("\n-------Fight Menu-------");
             System.out.println("1: Attack");
             System.out.println("2: Defend");
@@ -137,6 +138,7 @@ public class GameLogic {
             choice = scan.nextInt();
             System.out.println();
             scan.nextLine();
+            boolean notCheese = true;
             int randomDiff = (int) (Math.random()*3) - 1;
             int randomEnemyDiff = (int) (Math.random()*3) - 1;
             int randomEnemyDamageDiff = (int) (Math.random()*3) - 1;
@@ -319,28 +321,27 @@ public class GameLogic {
                 if (!used) {
                     used = true; //add here
                     if (playerClass.equals("Mage")) {
-                        int amtTick = mage.getBurnAttack();
                         if (randomEnemyDiff == -1) {
                             int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
                             player.setHealth(player.getHealth()-enemyAmtHit);
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
-                            System.out.println("The enemy STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
+                            System.out.println("You have successfully used your BURN ATTACK! The enemy is BURNING!");
+                            System.out.println("The enemy STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
-                            System.out.println("But the enemy also DEFENDED! Nothing happened!");
+                            System.out.println("You have successfully used your BURN ATTACK!");
+                            System.out.println("The enemy defended but you BROKE his BLOCK! The enemy is BURNING!");
                         } else if (randomEnemyDiff == 1){
-                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
+                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
                             if (enemySpecialHit<0)
                                 enemySpecialHit = 0;
-                            System.out.println("You have successfully defended " + amtDefend + " damage!");
+                            System.out.println("You have successfully used your BURN ATTACK! The enemy is BURNING!");
                             int doesItHit = (int) (Math.random()*3) - 1;
                             if (doesItHit == 0) {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
-                                System.out.println("The enemy SPECIAL STRIKES back and it LANDED! But since you defended, You've been hit for " + enemySpecialHit + " damage instead of " + (enemySpecialHit+amtDefend) + "!");
+                                System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                                 System.out.println("You are now on " + player.getHealth() + "HP");
                             } else {
-                                System.out.println("The enemy SPECIAL STRIKES back but it MISSED! Nothing happened!");
+                                System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
                             }
                         }
                     } else if (playerClass.equals("Healer")) {
@@ -398,21 +399,30 @@ public class GameLogic {
                             }
                         }
                     }
+                } else {
+                    System.out.println("You've already used your special move!");
+                    notCheese = false;
                 }
             } else if (choice != 4){
                 System.out.println("Not a proper fight option. Please choose again.");
+                notCheese = false;
             }
             if (choice == 4) {
                 System.out.println("You have fled. Better luck next time!");
+                resetPlayer(resetHealth);
+                break;
             }
-            if (used&&playerClass.equals("Mage")) {
-                if (hitCounter<=3) {
+            if (used&&playerClass.equals("Mage")&&notCheese) {
+                if (hitCounter<=2) {
                     hitCounter++;
                     enemy.setHealth(enemy.getHealth()-mage.getBurnAttack());
-                    System.out.println("The enemy has been BURNED for " + mage.getBurnAttack());
+                    System.out.println("\nThe enemy has been BURNED for " + mage.getBurnAttack() + "HP");
                     System.out.println("The enemy stands on " + enemy.getHealth() + "HP!");
-                } else if (hitCounter==4){
-                    System.out.println("The burn has worn OFF!");
+                } else if (hitCounter==3){
+                    if (!said) {
+                        System.out.println("The burn has worn OFF!");
+                        said = true;
+                    }
                 }
             }
             if (enemy.getHealth()<=0) {
