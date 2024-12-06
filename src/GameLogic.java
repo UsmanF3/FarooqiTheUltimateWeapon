@@ -15,7 +15,7 @@ public class GameLogic {
     public GameLogic() {
         level = 9;
         name = "";
-        bosskey = null;
+        bosskey = "hi";
         ultBook = null;
     }
 
@@ -41,6 +41,12 @@ public class GameLogic {
 
     private void introduce() {
         System.out.println("Hello fellow wanderer! Welcome to your great journey!");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return;
+        }
         System.out.print("Enter your name: ");
         name = scan.nextLine();
         try {
@@ -79,9 +85,20 @@ public class GameLogic {
     }
 
     private void explain() {
+        try {
+            Thread.sleep(800);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return;
+        }
         System.out.println();
         System.out.println("You will have to defeat many enemies in order to achieve your goal and get the ultimate weapon.");
         System.out.println("For now, you may start your journey at level one. You will now be redirected to the main menu.");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     private void mainMenu() {
@@ -751,6 +768,12 @@ public class GameLogic {
                         return;
                     }
                     System.out.println("The key is getting extremely hot!! You throw it on the floor!");
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
                     System.out.println("It's SHAKING and GLOWING AGGRESSIVELY!!");
                     try {
                         Thread.sleep(1000);
@@ -795,10 +818,10 @@ public class GameLogic {
         resetHealth++;
         resetHealth--;
         enemy = new Enemy("boss");
-        System.out.println("\nYou're on a floating island made of rock, with other islands all around you.");
+        System.out.println("\n\nYou're on a floating island made of rock, with other islands all around you.");
         System.out.println("It seems like you are in a remote galaxy in space..");
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return;
@@ -806,7 +829,7 @@ public class GameLogic {
         System.out.println("\nAN EXTREMELY LARGE ENEMY WITH A JEWELED CROWN ON HIS HEAD APPEARS BEFORE YOU!!");
         System.out.println("HE LOOKS EXTREMELY POWERFUL!");
         try {
-            Thread.sleep(800);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return;
@@ -814,17 +837,19 @@ public class GameLogic {
         System.out.println("\nWHO DARE AWAKEN ME FROM MY SLUMBER!!!");
         System.out.println("YOU WILL PAY THE PRICE!!!");
         System.out.print("\n.");
-        try {
-            Thread.sleep(1000);
-            System.out.print(".");
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            return;
+        for (int i = 0; i<3; i++) {
+            try {
+                Thread.sleep(1000);
+                System.out.print(".");
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
         }
-        System.out.println("You've encountered the ASTRAL BOSS!!!");
+        System.out.println("\n\nYou've encountered the ASTRAL BOSS!!!");
         while (choice != 4) {
             try {
-                Thread.sleep(200);
+                Thread.sleep(800);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 return;
@@ -1339,17 +1364,18 @@ public class GameLogic {
             }
             if (enemy.getHealth()<=0) {
                 enemy = null;
-                System.out.println("\nThe boss is DEFEATED! Well Done!");
-                int coinsAdd = (int) ((Math.random()*5)+8)*level;
-                player.setCoins(player.getCoins() + coinsAdd);
-                level++;
-                System.out.println("You got " + coinsAdd + " coins!");
-                System.out.println("You have unlocked level " + level + "!");
-                if (level==11) {
-                    bosskey = "obtained";
-                    System.out.println("\nThe enemy dropped an item. It looks like a key with cryptic writing all over it...");
-                    System.out.println("Obtained: ???");
+                System.out.println("This.... this can't be........");
+                System.out.println("NOOO!!!!!!");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    return;
                 }
+                System.out.println("\nThe boss is DEFEATED! Well Done!");
+                ultBook = "obtained";
+                System.out.println("\nThe boss dropped a book. It's written in a foreign language..");
+                System.out.println("Obtained: Book");
                 resetPlayer(resetHealth);
                 break;
             } else if (player.getHealth()<=0) {
