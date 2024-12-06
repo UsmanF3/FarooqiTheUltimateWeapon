@@ -92,7 +92,7 @@ public class GameLogic {
     int choice = -1;
 
     private void chooseMenu() {
-        while (choice != 6) {
+        while (choice != 7) {
             mainMenu();
             System.out.print("\nChoice #: ");
             choice = scan.nextInt();
@@ -527,40 +527,44 @@ public class GameLogic {
             System.out.println("4. Boss Portal Key");
         if (ultBook!=null)
             System.out.println("5. The Ultimate Book");
-        System.out.print("\nWhich # item would you like to interact with: ");
-        int itmChoice = scan.nextInt();
-        scan.nextLine();
-        System.out.println();
-        if (itmChoice==1) {
-            if (player.getCoins()>0) {
-                System.out.println("Shiny Golden Coins. Looks like they could be valuable.");
-            } else {
-                System.out.println("There's nothing in the coin pouch!");
-            }
-        } else if (itmChoice==2) {
-            if (playerClass.equals("Mage")) {
-                System.out.println("A magical spellbook with powers beyond that of a regular human..");
-            } else if (playerClass.equals("Healer")) {
-                System.out.println("A strange looking wand forged from twisted vines. It's core is glowing.");
-            } else if (playerClass.equals("Warrior")){
-                System.out.println("An extremely sharp sword paired with an extremely sturdy shield. Capable of inflicting much harm.");
-            }
-        } else if (itmChoice==3) {
-            System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1822.");
-        } else if (itmChoice==4) {
-            if (bosskey!=null) {
-                System.out.println("???");
-            } else {
+        System.out.println("-1: Exit Inventory");
+        int itmChoice=0;
+        while (itmChoice!=-1) {
+            System.out.print("\nWhich # item would you like to interact with: ");
+            itmChoice = scan.nextInt();
+            scan.nextLine();
+            System.out.println();
+            if (itmChoice==1) {
+                if (player.getCoins()>0) {
+                    System.out.println("Shiny Golden Coins. Looks like they could be valuable.");
+                } else {
+                    System.out.println("There's nothing in the coin pouch!");
+                }
+            } else if (itmChoice==2) {
+                if (playerClass.equals("Mage")) {
+                    System.out.println("A magical spellbook with powers beyond that of a regular human..");
+                } else if (playerClass.equals("Healer")) {
+                    System.out.println("A strange looking wand forged from twisted vines. It's core is glowing.");
+                } else if (playerClass.equals("Warrior")){
+                    System.out.println("An extremely sharp sword paired with an extremely sturdy shield. Capable of inflicting much harm.");
+                }
+            } else if (itmChoice==3) {
+                System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1822.");
+            } else if (itmChoice==4) {
+                if (bosskey!=null) {
+                    System.out.println("???");
+                } else {
+                    System.out.println("Invalid option!");
+                }
+            } else if (itmChoice==5) {
+                if (ultBook!=null) {
+                    System.out.println("???");
+                } else {
+                    System.out.println("Invalid option!");
+                }
+            } else if (itmChoice!=-1){
                 System.out.println("Invalid option!");
             }
-        } else if (itmChoice==5) {
-            if (ultBook!=null) {
-                System.out.println("???");
-            } else {
-                System.out.println("Invalid option!");
-            }
-        } else {
-            System.out.println("Invalid option!");
         }
     }
 
