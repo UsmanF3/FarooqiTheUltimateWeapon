@@ -13,7 +13,7 @@ public class GameLogic {
     private Enemy enemy;
 
     public GameLogic() {
-        level = 1;
+        level = 9;
         name = "";
         bosskey = null;
         ultBook = null;
@@ -43,6 +43,12 @@ public class GameLogic {
         System.out.println("Hello fellow wanderer! Welcome to your great journey!");
         System.out.print("Enter your name: ");
         name = scan.nextLine();
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return;
+        }
         System.out.println("Pick a class to get started:\n Mage\n Healer\n Warrior");
         while (playerClass == null) {
             askClass();
@@ -51,7 +57,7 @@ public class GameLogic {
     }
 
     private void askClass() {
-        System.out.print("Enter your choice here: ");
+        System.out.print("\nEnter your choice here: ");
         playerClass = scan.nextLine();
     }
 
@@ -135,6 +141,12 @@ public class GameLogic {
         System.out.println("You have entered level " + level);
         System.out.println("You have encountered a level " + levelEnemy + " ENEMY!");
         while (choice != 4) {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
             System.out.println("\nWhat will you choose to do?");
             System.out.println("\n-------Fight Menu-------");
             System.out.println("1: Attack");
@@ -145,6 +157,12 @@ public class GameLogic {
             choice = scan.nextInt();
             System.out.println();
             scan.nextLine();
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
             boolean notCheese = true;
             int randomDiff = (int) (Math.random()*3) - 1;
             int randomEnemyDiff = (int) (Math.random()*3) - 1;
@@ -155,6 +173,12 @@ public class GameLogic {
                     if (randomEnemyDiff == -1) {
                         enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
                         System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("You have successfully attacked the enemy for " + (amtHit - enemy.getDefend()) + " health!");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
@@ -162,6 +186,12 @@ public class GameLogic {
                         int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
                         player.setHealth(player.getHealth()-enemyAmtHit);
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
@@ -169,6 +199,12 @@ public class GameLogic {
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         int doesItHit = (int) (Math.random()*3) - 1;
                         if (doesItHit == 0) {
                             player.setHealth(player.getHealth()-enemySpecialHit);
@@ -185,6 +221,12 @@ public class GameLogic {
                     if (randomEnemyDiff == -1) {
                         enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
                         System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("You have successfully attacked the enemy for " + (amtHit - enemy.getDefend()) + " health!");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
@@ -192,6 +234,12 @@ public class GameLogic {
                         int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
                         player.setHealth(player.getHealth()-enemyAmtHit);
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
@@ -199,6 +247,12 @@ public class GameLogic {
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         int doesItHit = (int) (Math.random()*3) - 1;
                         if (doesItHit == 0) {
                             player.setHealth(player.getHealth()-enemySpecialHit);
@@ -215,6 +269,12 @@ public class GameLogic {
                     if (randomEnemyDiff == -1) {
                         enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
                         System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("You have successfully attacked the enemy for " + (amtHit - enemy.getDefend()) + " health!");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
@@ -222,6 +282,12 @@ public class GameLogic {
                         int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
                         player.setHealth(player.getHealth()-enemyAmtHit);
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
@@ -229,6 +295,12 @@ public class GameLogic {
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         int doesItHit = (int) (Math.random()*3) - 1;
                         if (doesItHit == 0) {
                             player.setHealth(player.getHealth()-enemySpecialHit);
@@ -250,16 +322,34 @@ public class GameLogic {
                             enemyAmtHit=0;
                         player.setHealth(player.getHealth()-enemyAmtHit);
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("The enemy STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("But the enemy also DEFENDED! Nothing happened!");
                     } else if (randomEnemyDiff == 1){
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
                         if (enemySpecialHit<0)
                             enemySpecialHit = 0;
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         int doesItHit = (int) (Math.random()*3) - 1;
                         if (doesItHit == 0) {
                             player.setHealth(player.getHealth()-enemySpecialHit);
@@ -277,16 +367,34 @@ public class GameLogic {
                             enemyAmtHit=0;
                         player.setHealth(player.getHealth()-enemyAmtHit);
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("The enemy STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("But the enemy also DEFENDED! Nothing happened!");
                     } else if (randomEnemyDiff == 1){
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
                         if (enemySpecialHit<0)
                             enemySpecialHit = 0;
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         int doesItHit = (int) (Math.random()*3) - 1;
                         if (doesItHit == 0) {
                             player.setHealth(player.getHealth()-enemySpecialHit);
@@ -304,16 +412,34 @@ public class GameLogic {
                             enemyAmtHit=0;
                         player.setHealth(player.getHealth()-enemyAmtHit);
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("The enemy STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         System.out.println("But the enemy also DEFENDED! Nothing happened!");
                     } else if (randomEnemyDiff == 1){
                         int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
                         if (enemySpecialHit<0)
                             enemySpecialHit = 0;
                         System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
                         int doesItHit = (int) (Math.random()*3) - 1;
                         if (doesItHit == 0) {
                             player.setHealth(player.getHealth()-enemySpecialHit);
@@ -332,16 +458,34 @@ public class GameLogic {
                             int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
                             player.setHealth(player.getHealth()-enemyAmtHit);
                             System.out.println("You have successfully used your BURN ATTACK! The enemy is BURNING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             System.out.println("The enemy STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
                             System.out.println("You have successfully used your BURN ATTACK!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             System.out.println("The enemy defended but you BROKE his BLOCK! The enemy is BURNING!");
                         } else if (randomEnemyDiff == 1){
                             int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
                             if (enemySpecialHit<0)
                                 enemySpecialHit = 0;
                             System.out.println("You have successfully used your BURN ATTACK! The enemy is BURNING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             int doesItHit = (int) (Math.random()*3) - 1;
                             if (doesItHit == 0) {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
@@ -358,12 +502,24 @@ public class GameLogic {
                             player.setHealth(player.getHealth()-enemyAmtHit);
                             System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
                             System.out.println("Your healing essence is in the air!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             System.out.println("The enemy STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
                             player.setHealth(player.getHealth()+healer.getHeal());
                             System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
                             System.out.println("Your healing essence is in the air!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             System.out.println("The enemy defended but it did NOTHING!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 1){
@@ -371,6 +527,12 @@ public class GameLogic {
                             player.setHealth(player.getHealth()+healer.getHeal());
                             System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
                             System.out.println("Your healing essence is in the air!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             int doesItHit = (int) (Math.random()*3) - 1;
                             if (doesItHit == 0) {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
@@ -389,12 +551,24 @@ public class GameLogic {
                             enemy.setHealth(enemy.getHealth()-specialAmtHit);
                             System.out.println("You have successfully used your SPECIAL ATTACK! You've hit the enemy for " + specialAmtHit + " damage!");
                             System.out.println("The enemy is BLEEDING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             System.out.println("The enemy STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
                             enemy.setHealth(enemy.getHealth()-specialAmtHit);
                             System.out.println("You have successfully used your SPECIAL ATTACK!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             System.out.println("The enemy defended but you BROKE his BLOCK!  You've hit the enemy for " + specialAmtHit + " damage!");
                             System.out.println("The enemy is BLEEDING!");
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
@@ -405,6 +579,12 @@ public class GameLogic {
                             enemy.setHealth(enemy.getHealth()-specialAmtHit);
                             System.out.println("You have successfully used your SPECIAL ATTACK! You've hit the enemy for " + specialAmtHit + " damage!");
                             System.out.println("The enemy is BLEEDING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
                             int doesItHit = (int) (Math.random()*3) - 1;
                             if (doesItHit == 0) {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
@@ -429,6 +609,12 @@ public class GameLogic {
                 System.out.println("You have fled. Better luck next time!");
                 resetPlayer(resetHealth);
                 break;
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
             }
             if (used&&playerClass.equals("Mage")&&notCheese) {
                 if (hitCounter<=4) {
@@ -477,9 +663,9 @@ public class GameLogic {
                 level++;
                 System.out.println("You got " + coinsAdd + " coins!");
                 System.out.println("You have unlocked level " + level + "!");
-                if (level==10) {
+                if (level==11) {
                     bosskey = "obtained";
-                    System.out.println("The enemy dropped an item. It looks like a key with cryptic writing all over it...");
+                    System.out.println("\nThe enemy dropped an item. It looks like a key with cryptic writing all over it...");
                     System.out.println("Obtained: ???");
                 }
                 resetPlayer(resetHealth);
@@ -529,7 +715,7 @@ public class GameLogic {
         }
         System.out.println("3. Pocket Watch");
         if (bosskey!=null)
-            System.out.println("4. Boss Portal Key");
+            System.out.println("4. Ancient Key");
         if (ultBook!=null)
             System.out.println("5. The Ultimate Book");
         System.out.println("-1: Exit Inventory");
@@ -557,7 +743,34 @@ public class GameLogic {
                 System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1822.");
             } else if (itmChoice==4) {
                 if (bosskey!=null) {
-                    System.out.println("???");
+                    System.out.println("It's the ancient key the enemy dropped..");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("The key is getting extremely hot!! You throw it on the floor!");
+                    System.out.println("It's SHAKING and GLOWING AGGRESSIVELY!!");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("YOU'RE BEING TELEPORTED!!!!!!!");
+                    System.out.print("\n.");
+                    for (int i = 0; i<3; i++) {
+                        try {
+                            Thread.sleep(1000);
+                            System.out.print(".");
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                    }
+                    bossFight();
+                    break;
                 } else {
                     System.out.println("Invalid option!");
                 }
@@ -571,6 +784,10 @@ public class GameLogic {
                 System.out.println("Invalid option!");
             }
         }
+    }
+
+    private void bossFight() {
+
     }
 
     private void exploreMoves() {

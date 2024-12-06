@@ -4,7 +4,7 @@ public class Mage {
     private Player player;
 
     public Mage() {
-        attack = 2;
+        attack = 200;
         burnAttack = 1;
     }
 
