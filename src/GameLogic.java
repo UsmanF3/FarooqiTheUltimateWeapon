@@ -787,6 +787,578 @@ public class GameLogic {
     }
 
     private void bossFight() {
+        int choice = -1;
+        int hitCounter = 0;
+        boolean used = false;
+        boolean said = false;
+        int resetHealth = player.getHealth();
+        resetHealth++;
+        resetHealth--;
+        enemy = new Enemy("boss");
+        System.out.println("\nYou're on a floating island made of rock, with other islands all around you.");
+        System.out.println("It seems like you are in a remote galaxy in space..");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return;
+        }
+        System.out.println("\nAN EXTREMELY LARGE ENEMY WITH A JEWELED CROWN ON HIS HEAD APPEARS BEFORE YOU!!");
+        System.out.println("HE LOOKS EXTREMELY POWERFUL!");
+        try {
+            Thread.sleep(800);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return;
+        }
+        System.out.println("\nWHO DARE AWAKEN ME FROM MY SLUMBER!!!");
+        System.out.println("YOU WILL PAY THE PRICE!!!");
+        System.out.print("\n.");
+        try {
+            Thread.sleep(1000);
+            System.out.print(".");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return;
+        }
+        System.out.println("You've encountered the ASTRAL BOSS!!!");
+        while (choice != 4) {
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
+            System.out.println("\nWhat will you choose to do?");
+            System.out.println("\n-------Fight Menu-------");
+            System.out.println("1: Attack");
+            System.out.println("2: Defend");
+            System.out.println("3: Special Move");
+            System.out.println("4: Flee");
+            System.out.print("\nFight Option #: ");
+            choice = scan.nextInt();
+            System.out.println();
+            scan.nextLine();
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
+            boolean notCheese = true;
+            int randomDiff = (int) (Math.random()*3) - 1;
+            int randomEnemyDiff = (int) (Math.random()*3) - 1;
+            int randomEnemyDamageDiff = (int) (Math.random()*3) - 1;
+            if (choice == 1) {
+                if (playerClass.equals("Mage")) {
+                    int amtHit = mage.getAttack() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
+                        System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("You have successfully attacked the boss for " + (amtHit - enemy.getDefend()) + " health!");
+                        System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("The boss STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                        System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 1){
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                        System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                        } else {
+                            System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                        }
+                    }
+                } else if (playerClass.equals("Healer")) {
+                    int amtHit = healer.getAttack() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
+                        System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("You have successfully attacked the boss for " + (amtHit - enemy.getDefend()) + " health!");
+                        System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("The boss STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                        System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 1){
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                        System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                        } else {
+                            System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                        }
+                    }
+                } else if (playerClass.equals("Warrior")) {
+                    int amtHit = warrior.getAttack() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        enemy.setHealth(enemy.getHealth() - amtHit + enemy.getDefend());
+                        System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("You have successfully attacked the boss for " + (amtHit - enemy.getDefend()) + " health!");
+                        System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("The boss STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                        System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 1){
+                        enemy.setHealth(enemy.getHealth() - amtHit);
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                        System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                        } else {
+                            System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                        }
+                    }
+                }
+            } else if (choice == 2) {
+                if (playerClass.equals("Mage")) {
+                    int amtDefend = player.getDefendStat() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff-amtDefend;
+                        if (enemyAmtHit<0)
+                            enemyAmtHit=0;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("The boss STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("But the boss also DEFENDED! Nothing happened!");
+                    } else if (randomEnemyDiff == 1){
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
+                        if (enemySpecialHit<0)
+                            enemySpecialHit = 0;
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The boss SPECIAL STRIKES back and it LANDED! But since you defended, You've been hit for " + enemySpecialHit + " damage instead of " + (enemySpecialHit+amtDefend) + "!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                        } else {
+                            System.out.println("The boss SPECIAL STRIKES back but it MISSED! Nothing happened!");
+                        }
+                    }
+                } else if (playerClass.equals("Healer")) {
+                    int amtDefend = player.getDefendStat() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff-amtDefend;
+                        if (enemyAmtHit<0)
+                            enemyAmtHit=0;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("The boss STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("But the boss also DEFENDED! Nothing happened!");
+                    } else if (randomEnemyDiff == 1){
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
+                        if (enemySpecialHit<0)
+                            enemySpecialHit = 0;
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The boss SPECIAL STRIKES back and it LANDED! But since you defended, You've been hit for " + enemySpecialHit + " damage instead of " + (enemySpecialHit+amtDefend) + "!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                        } else {
+                            System.out.println("The boss SPECIAL STRIKES back but it MISSED! Nothing happened!");
+                        }
+                    }
+                } else if (playerClass.equals("Warrior")) {
+                    int amtDefend = player.getDefendStat() + randomDiff;
+                    if (randomEnemyDiff == -1) {
+                        int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff-amtDefend;
+                        if (enemyAmtHit<0)
+                            enemyAmtHit=0;
+                        player.setHealth(player.getHealth()-enemyAmtHit);
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("The boss STRIKES! However since you defended, You've been hit for " + enemyAmtHit + " damage instead of " + (enemyAmtHit+amtDefend) + "!");
+                        System.out.println("You are now on " + player.getHealth() + "HP");
+                    } else if (randomEnemyDiff == 0) {
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("But the boss also DEFENDED! Nothing happened!");
+                    } else if (randomEnemyDiff == 1){
+                        int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff - amtDefend;
+                        if (enemySpecialHit<0)
+                            enemySpecialHit = 0;
+                        System.out.println("You have successfully defended " + amtDefend + " damage!");
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        int doesItHit = (int) (Math.random()*3) - 1;
+                        if (doesItHit == 0) {
+                            player.setHealth(player.getHealth()-enemySpecialHit);
+                            System.out.println("The boss SPECIAL STRIKES back and it LANDED! But since you defended, You've been hit for " + enemySpecialHit + " damage instead of " + (enemySpecialHit+amtDefend) + "!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                        } else {
+                            System.out.println("The boss SPECIAL STRIKES back but it MISSED! Nothing happened!");
+                        }
+                    }
+                }
+            } else if (choice == 3) {
+                if (!used) {
+                    used = true;
+                    if (playerClass.equals("Mage")) {
+                        if (randomEnemyDiff == -1) {
+                            int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                            player.setHealth(player.getHealth()-enemyAmtHit);
+                            System.out.println("You have successfully used your BURN ATTACK! The boss is BURNING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            System.out.println("The boss STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                        } else if (randomEnemyDiff == 0) {
+                            System.out.println("You have successfully used your BURN ATTACK!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            System.out.println("The boss defended but you BROKE his BLOCK! The boss is BURNING!");
+                        } else if (randomEnemyDiff == 1){
+                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                            if (enemySpecialHit<0)
+                                enemySpecialHit = 0;
+                            System.out.println("You have successfully used your BURN ATTACK! The boss is BURNING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            int doesItHit = (int) (Math.random()*3) - 1;
+                            if (doesItHit == 0) {
+                                player.setHealth(player.getHealth()-enemySpecialHit);
+                                System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                                System.out.println("You are now on " + player.getHealth() + "HP");
+                            } else {
+                                System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                            }
+                        }
+                    } else if (playerClass.equals("Healer")) {
+                        if (randomEnemyDiff == -1) {
+                            int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                            player.setHealth(player.getHealth()+healer.getHeal());
+                            player.setHealth(player.getHealth()-enemyAmtHit);
+                            System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
+                            System.out.println("Your healing essence is in the air!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            System.out.println("The boss STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                        } else if (randomEnemyDiff == 0) {
+                            player.setHealth(player.getHealth()+healer.getHeal());
+                            System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
+                            System.out.println("Your healing essence is in the air!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            System.out.println("The boss defended but it did NOTHING!");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                        } else if (randomEnemyDiff == 1){
+                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                            player.setHealth(player.getHealth()+healer.getHeal());
+                            System.out.println("You have successfully used your HEAL! You've healed " + healer.getHeal() + "HP!");
+                            System.out.println("Your healing essence is in the air!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            int doesItHit = (int) (Math.random()*3) - 1;
+                            if (doesItHit == 0) {
+                                player.setHealth(player.getHealth()-enemySpecialHit);
+                                System.out.println("The boss SPECIAL STRIKES and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                                System.out.println("You are now on " + player.getHealth() + "HP");
+                            } else {
+                                System.out.println("The boss SPECIAL STRIKES but it MISSED!");
+                                System.out.println("You are now on " + player.getHealth() + "HP");
+                            }
+                        }
+                    } else if (playerClass.equals("Warrior")) {
+                        int specialAmtHit = warrior.getSpecialAttack()+randomDiff;
+                        if (randomEnemyDiff == -1) {
+                            int enemyAmtHit = enemy.getAttack()+randomEnemyDamageDiff;
+                            player.setHealth(player.getHealth()-enemyAmtHit);
+                            enemy.setHealth(enemy.getHealth()-specialAmtHit);
+                            System.out.println("You have successfully used your SPECIAL ATTACK! You've hit the boss for " + specialAmtHit + " damage!");
+                            System.out.println("The boss is BLEEDING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            System.out.println("The boss STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                            System.out.println("You are now on " + player.getHealth() + "HP");
+                        } else if (randomEnemyDiff == 0) {
+                            enemy.setHealth(enemy.getHealth()-specialAmtHit);
+                            System.out.println("You have successfully used your SPECIAL ATTACK!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            System.out.println("The boss defended but you BROKE his BLOCK!  You've hit the enemy for " + specialAmtHit + " damage!");
+                            System.out.println("The boss is BLEEDING!");
+                            System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                        } else if (randomEnemyDiff == 1){
+                            int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
+                            if (enemySpecialHit<0)
+                                enemySpecialHit = 0;
+                            enemy.setHealth(enemy.getHealth()-specialAmtHit);
+                            System.out.println("You have successfully used your SPECIAL ATTACK! You've hit the boss for " + specialAmtHit + " damage!");
+                            System.out.println("The boss is BLEEDING!");
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                            int doesItHit = (int) (Math.random()*3) - 1;
+                            if (doesItHit == 0) {
+                                player.setHealth(player.getHealth()-enemySpecialHit);
+                                System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
+                                System.out.println("You are now on " + player.getHealth() + "HP");
+                                System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                            } else {
+                                System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                                System.out.println("The boss stands on " + enemy.getHealth() + "HP");
+                            }
+                        }
+                    }
+                } else {
+                    System.out.println("You've already used your special move!");
+                    notCheese = false;
+                }
+            } else if (choice != 4){
+                System.out.println("Not a proper fight option. Please choose again.");
+                notCheese = false;
+            }
+            if (choice == 4) {
+                System.out.println("You have fled. Better luck next time!");
+                resetPlayer(resetHealth);
+                break;
+            }
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return;
+            }
+            if (used&&playerClass.equals("Mage")&&notCheese) {
+                if (hitCounter<=4) {
+                    hitCounter++;
+                    enemy.setHealth(enemy.getHealth()-mage.getBurnAttack());
+                    System.out.println("\nThe boss has been BURNED for " + mage.getBurnAttack() + "HP");
+                    System.out.println("The boss stands on " + enemy.getHealth() + "HP!");
+                } else if (hitCounter==5){
+                    if (!said) {
+                        System.out.println("\nThe burn has worn OFF!");
+                        said = true;
+                    }
+                }
+            }
+            if (used&&playerClass.equals("Warrior")&&notCheese) {
+                if (hitCounter<=1) {
+                    hitCounter++;
+                    enemy.setHealth(enemy.getHealth()-(warrior.getAttack()/2));
+                    System.out.println("\nThe boss bled " + (warrior.getAttack()/2) + "HP");
+                    System.out.println("The boss stands on " + enemy.getHealth() + "HP!");
+                } else if (hitCounter==2){
+                    if (!said) {
+                        System.out.println("\nThe wound has healed!");
+                        said = true;
+                    }
+                }
+            }
+            if (used&&playerClass.equals("Healer")&&notCheese) {
+                if (hitCounter<=2) {
+                    hitCounter++;
+                    player.setHealth(player.getHealth()+(healer.getHeal()/3));
+                    System.out.println("\nYour healing essence has healed you for " + (healer.getHeal()/3) + "HP");
+                    System.out.println("You are now on " + player.getHealth() + "HP!");
+                } else if (hitCounter==3){
+                    if (!said) {
+                        System.out.println("\nThe healing essence has dispersed!");
+                        said = true;
+                    }
+                }
+            }
+            if (enemy.getHealth()<=0) {
+                enemy = null;
+                System.out.println("\nThe boss is DEFEATED! Well Done!");
+                int coinsAdd = (int) ((Math.random()*5)+8)*level;
+                player.setCoins(player.getCoins() + coinsAdd);
+                level++;
+                System.out.println("You got " + coinsAdd + " coins!");
+                System.out.println("You have unlocked level " + level + "!");
+                if (level==11) {
+                    bosskey = "obtained";
+                    System.out.println("\nThe enemy dropped an item. It looks like a key with cryptic writing all over it...");
+                    System.out.println("Obtained: ???");
+                }
+                resetPlayer(resetHealth);
+                break;
+            } else if (player.getHealth()<=0) {
+                System.out.println("\nYou have been DEFEATED. Better luck next time!");
+                resetPlayer(resetHealth);
+                break;
+            }
+
+        }
 
     }
 

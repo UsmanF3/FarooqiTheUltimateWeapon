@@ -4,11 +4,11 @@ public class Enemy {
     private int health;
     private int defend;
 
-    public Enemy() {
-        attack = 1;
-        defend = 1;
-        specialAttack = 3;
-        health = 10;
+    public Enemy(String boss) {
+        attack = 15;
+        defend = 15;
+        specialAttack = 40;
+        health = 350;
     }
 
     public Enemy(int level) {
