@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class GameLogic {
     private String playerClass;
     private int level;
+    private boolean bossDefeated;
     private String bosskey;
     private String ultBook;
     private String name;
@@ -13,9 +14,10 @@ public class GameLogic {
     private Enemy enemy;
 
     public GameLogic() {
-        level = 9;
+        level = 1;
         name = "";
-        bosskey = "hi";
+        bossDefeated = false;
+        bosskey = null;
         ultBook = null;
     }
 
@@ -86,7 +88,7 @@ public class GameLogic {
 
     private void explain() {
         try {
-            Thread.sleep(800);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return;
@@ -95,7 +97,7 @@ public class GameLogic {
         System.out.println("You will have to defeat many enemies in order to achieve your goal and get the ultimate weapon.");
         System.out.println("For now, you may start your journey at level one. You will now be redirected to the main menu.");
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -760,46 +762,108 @@ public class GameLogic {
                 System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1822.");
             } else if (itmChoice==4) {
                 if (bosskey!=null) {
-                    System.out.println("It's the ancient key the enemy dropped..");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                        return;
-                    }
-                    System.out.println("The key is getting extremely hot!! You throw it on the floor!");
-                    try {
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                        return;
-                    }
-                    System.out.println("It's SHAKING and GLOWING AGGRESSIVELY!!");
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                        return;
-                    }
-                    System.out.println("YOU'RE BEING TELEPORTED!!!!!!!");
-                    System.out.print("\n.");
-                    for (int i = 0; i<3; i++) {
+                    if (!bossDefeated) {
+                        System.out.println("It's the ancient key the enemy dropped..");
                         try {
-                            Thread.sleep(1000);
-                            System.out.print(".");
+                            Thread.sleep(2000);
                         } catch (InterruptedException e) {
                             Thread.currentThread().interrupt();
                             return;
                         }
+                        System.out.println("\nThe key is getting extremely hot!! You throw it on the floor!");
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("It's SHAKING and GLOWING AGGRESSIVELY!!");
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            Thread.currentThread().interrupt();
+                            return;
+                        }
+                        System.out.println("\nYOU'RE BEING TELEPORTED!!!!!!!");
+                        System.out.print("\n.");
+                        for (int i = 0; i<3; i++) {
+                            try {
+                                Thread.sleep(1000);
+                                System.out.print(".");
+                            } catch (InterruptedException e) {
+                                Thread.currentThread().interrupt();
+                                return;
+                            }
+                        }
+                        bossFight();
+                        break;
+                    } else {
+                        System.out.println("The boss portal key... It's dull and cold now.");
                     }
-                    bossFight();
-                    break;
                 } else {
                     System.out.println("Invalid option!");
                 }
             } else if (itmChoice==5) {
                 if (ultBook!=null) {
-                    System.out.println("???");
+                    System.out.println("It's an old, dusty book with cryptic writing all over the front cover.");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("You open it up..");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("\nYou can't read anything!");
+                    try {
+                        Thread.sleep(2500);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("Wait! The text starts to GLOW BRIGHTLY!");
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("You can understand it now?!?!");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("\n--------The Ultimate Weapon--------");
+                    System.out.println("You've finally obtained the ultimate weapon in this multiverse...");
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("\nThe ultimate weapon is the strength, wisdom, and endurance you built on this journey.. In other words.. the ultimate weapon is.. ");
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("\n... You.");
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("\nThanks for playing!");
+                    break;
                 } else {
                     System.out.println("Invalid option!");
                 }
@@ -821,7 +885,7 @@ public class GameLogic {
         System.out.println("\n\nYou're on a floating island made of rock, with other islands all around you.");
         System.out.println("It seems like you are in a remote galaxy in space..");
         try {
-            Thread.sleep(2000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return;
@@ -829,13 +893,13 @@ public class GameLogic {
         System.out.println("\nAN EXTREMELY LARGE ENEMY WITH A JEWELED CROWN ON HIS HEAD APPEARS BEFORE YOU!!");
         System.out.println("HE LOOKS EXTREMELY POWERFUL!");
         try {
-            Thread.sleep(2000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return;
         }
-        System.out.println("\nWHO DARE AWAKEN ME FROM MY SLUMBER!!!");
-        System.out.println("YOU WILL PAY THE PRICE!!!");
+        System.out.println("\n???: \"WHO DARE AWAKEN ME FROM MY SLUMBER!!!\"");
+        System.out.println("???: \"YOU WILL PAY THE PRICE!!!\"");
         System.out.print("\n.");
         for (int i = 0; i<3; i++) {
             try {
@@ -1364,7 +1428,13 @@ public class GameLogic {
             }
             if (enemy.getHealth()<=0) {
                 enemy = null;
-                System.out.println("This.... this can't be........");
+                System.out.println("\nThis.... this can't be........");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    return;
+                }
                 System.out.println("NOOO!!!!!!");
                 try {
                     Thread.sleep(1000);
@@ -1374,6 +1444,7 @@ public class GameLogic {
                 }
                 System.out.println("\nThe boss is DEFEATED! Well Done!");
                 ultBook = "obtained";
+                bossDefeated = true;
                 System.out.println("\nThe boss dropped a book. It's written in a foreign language..");
                 System.out.println("Obtained: Book");
                 resetPlayer(resetHealth);

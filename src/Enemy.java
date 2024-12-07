@@ -12,10 +12,10 @@ public class Enemy {
     }
 
     public Enemy(int level) {
-        attack = 2 + level ;
-        defend = 1+level;
+        attack = 2 + level;
+        defend = 2+level;
         specialAttack = 5+level;
-        health = 15 + (level*(int)(Math.random()*10)+1);
+        health = 25 + (level*(int)(Math.random()*10)+1);
     }
 
     public int getHealth() {
