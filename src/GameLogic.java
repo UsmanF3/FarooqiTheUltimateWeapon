@@ -1554,8 +1554,8 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("health")) {
                     proper = true;
-                    System.out.print("Health +1 = 40 Coins. How much would you like to upgrade: ");
-                    int amtUpg = scan.nextInt();
+                    System.out.print("Health +5 = 40 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt()*5;
                     scan.nextLine();
                     if (amtUpg>=0) {
                         if (player.getCoins()>=amtUpg*40) {
@@ -1570,12 +1570,12 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("defend")){
                     proper = true;
-                    System.out.print("Defend +1 = 50 Coins. How much would you like to upgrade: ");
+                    System.out.print("Defend +1 = 25 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
-                        if (player.getCoins()>=amtUpg*50) {
-                            player.setCoins(player.getCoins()-amtUpg*50);
+                        if (player.getCoins()>=amtUpg*25) {
+                            player.setCoins(player.getCoins()-amtUpg*25);
                             player.setDefendStat(player.getDefendStat()+amtUpg);
                             System.out.println("You have successfully upgraded your defend stat by " + amtUpg + ". Your new defend stat is: " + player.getDefendStat());
                         } else {
@@ -1632,8 +1632,8 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("health")) {
                     proper = true;
-                    System.out.print("Health +1 = 40 Coins. How much would you like to upgrade: ");
-                    int amtUpg = scan.nextInt();
+                    System.out.print("Health +5 = 40 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt()*5;
                     scan.nextLine();
                     if (amtUpg>=0) {
                         if (player.getCoins()>=amtUpg*40) {
@@ -1648,12 +1648,12 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("defend")) {
                     proper = true;
-                    System.out.print("Defend +1 = 50 Coins. How much would you like to upgrade: ");
+                    System.out.print("Defend +1 = 25 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
-                        if (player.getCoins()>=amtUpg*50) {
-                            player.setCoins(player.getCoins()-amtUpg*50);
+                        if (player.getCoins()>=amtUpg*25) {
+                            player.setCoins(player.getCoins()-amtUpg*25);
                             player.setDefendStat(player.getDefendStat()+amtUpg);
                             System.out.println("You have successfully upgraded your defend stat by " + amtUpg + ". Your new defend stat is: " + player.getDefendStat());
                         } else {
@@ -1710,8 +1710,8 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("health")) {
                     proper = true;
-                    System.out.print("Health +1 = 40 Coins. How much would you like to upgrade: ");
-                    int amtUpg = scan.nextInt();
+                    System.out.print("Health +5 = 40 Coins. How much would you like to upgrade: ");
+                    int amtUpg = scan.nextInt()*5;
                     scan.nextLine();
                     if (amtUpg>=0) {
                         if (player.getCoins()>=amtUpg*40) {
@@ -1726,12 +1726,12 @@ public class GameLogic {
                     }
                 } else if (whatUpg.equals("defend")) {
                     proper = true;
-                    System.out.print("Defend +1 = 50 Coins. How much would you like to upgrade: ");
+                    System.out.print("Defend +1 = 25 Coins. How much would you like to upgrade: ");
                     int amtUpg = scan.nextInt();
                     scan.nextLine();
                     if (amtUpg>=0) {
-                        if (player.getCoins()>=amtUpg*50) {
-                            player.setCoins(player.getCoins()-amtUpg*50);
+                        if (player.getCoins()>=amtUpg*25) {
+                            player.setCoins(player.getCoins()-amtUpg*25);
                             player.setDefendStat(player.getDefendStat()+amtUpg);
                             System.out.println("You have successfully upgraded your defend stat by " + amtUpg + ". Your new defend stat is: " + player.getDefendStat());
                         } else {
