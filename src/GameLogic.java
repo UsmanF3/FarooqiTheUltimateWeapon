@@ -288,7 +288,7 @@ public class GameLogic {
                         }
                     }
                 } else if (playerClass.equals("Warrior")) {
-                    int amtHit = healer.getAttack() + randomDiff - enemy.getDefend();
+                    int amtHit = warrior.getAttack() + randomDiff - enemy.getDefend();
                     if (amtHit<0)
                         amtHit=0;
                     if (randomEnemyDiff == -1) {
