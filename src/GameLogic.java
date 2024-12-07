@@ -188,10 +188,11 @@ public class GameLogic {
             int randomEnemyDamageDiff = (int) (Math.random()*3) - 1;
             if (choice == 1) {
                 if (playerClass.equals("Mage")) {
-                    int amtHit = mage.getAttack() + randomDiff - enemy.getDefend();
-                    if (amtHit<0)
-                        amtHit=0;
+                    int amtHit = mage.getAttack() + randomDiff;
                     if (randomEnemyDiff == -1) {
+                        amtHit = mage.getAttack() + randomDiff - enemy.getDefend();
+                        if (amtHit<0)
+                            amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
                         try {
@@ -238,10 +239,11 @@ public class GameLogic {
                         }
                     }
                 } else if (playerClass.equals("Healer")) {
-                    int amtHit = healer.getAttack() + randomDiff - enemy.getDefend();
-                    if (amtHit<0)
-                        amtHit=0;
+                    int amtHit = healer.getAttack() + randomDiff;
                     if (randomEnemyDiff == -1) {
+                        amtHit = healer.getAttack() + randomDiff - enemy.getDefend();
+                        if (amtHit<0)
+                            amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
                         try {
@@ -288,10 +290,11 @@ public class GameLogic {
                         }
                     }
                 } else if (playerClass.equals("Warrior")) {
-                    int amtHit = warrior.getAttack() + randomDiff - enemy.getDefend();
-                    if (amtHit<0)
-                        amtHit=0;
+                    int amtHit = warrior.getAttack() + randomDiff;
                     if (randomEnemyDiff == -1) {
+                        amtHit = warrior.getAttack() + randomDiff - enemy.getDefend();
+                        if (amtHit<0)
+                            amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
                         try {
@@ -946,10 +949,11 @@ public class GameLogic {
             int randomEnemyDamageDiff = (int) (Math.random()*3) - 1;
             if (choice == 1) {
                 if (playerClass.equals("Mage")) {
-                    int amtHit = mage.getAttack() + randomDiff - enemy.getDefend();
-                    if (amtHit<0)
-                        amtHit=0;
+                    int amtHit = mage.getAttack() + randomDiff;
                     if (randomEnemyDiff == -1) {
+                        amtHit = mage.getAttack() + randomDiff - enemy.getDefend();
+                        if (amtHit<0)
+                            amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
                         try {
@@ -996,10 +1000,11 @@ public class GameLogic {
                         }
                     }
                 } else if (playerClass.equals("Healer")) {
-                    int amtHit = healer.getAttack() + randomDiff - enemy.getDefend();
-                    if (amtHit<0)
-                        amtHit=0;
+                    int amtHit = healer.getAttack() + randomDiff;
                     if (randomEnemyDiff == -1) {
+                        amtHit = healer.getAttack() + randomDiff - enemy.getDefend();
+                        if (amtHit<0)
+                            amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
                         try {
@@ -1046,10 +1051,11 @@ public class GameLogic {
                         }
                     }
                 } else if (playerClass.equals("Warrior")) {
-                    int amtHit = warrior.getAttack() + randomDiff - enemy.getDefend();
-                    if (amtHit<0)
-                        amtHit=0;
+                    int amtHit = warrior.getAttack() + randomDiff;
                     if (randomEnemyDiff == -1) {
+                        amtHit = warrior.getAttack() + randomDiff - enemy.getDefend();
+                        if (amtHit<0)
+                            amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
                         System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
                         try {
