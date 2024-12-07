@@ -194,7 +194,7 @@ public class GameLogic {
                         if (amtHit<0)
                             amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
-                        System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You attacked the enemy for " + (amtHit+enemy.getDefend()) + " damage but he DEFENDED!");
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
@@ -245,7 +245,7 @@ public class GameLogic {
                         if (amtHit<0)
                             amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
-                        System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You attacked the enemy for " + (amtHit+enemy.getDefend()) + " damage but he DEFENDED!");
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
@@ -296,7 +296,7 @@ public class GameLogic {
                         if (amtHit<0)
                             amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
-                        System.out.println("You attacked the enemy for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You attacked the enemy for " + (amtHit+enemy.getDefend()) + " damage but he DEFENDED!");
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
@@ -955,7 +955,7 @@ public class GameLogic {
                         if (amtHit<0)
                             amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
-                        System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You attacked the boss for " + (amtHit+enemy.getDefend()) + " damage but he DEFENDED!");
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
@@ -1006,7 +1006,7 @@ public class GameLogic {
                         if (amtHit<0)
                             amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
-                        System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You attacked the boss for " + (amtHit+enemy.getDefend()) + " damage but he DEFENDED!");
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
@@ -1057,7 +1057,7 @@ public class GameLogic {
                         if (amtHit<0)
                             amtHit=0;
                         enemy.setHealth(enemy.getHealth() - amtHit);
-                        System.out.println("You attacked the boss for " + amtHit + " damage but he DEFENDED!");
+                        System.out.println("You attacked the boss for " + (amtHit+enemy.getDefend()) + " damage but he DEFENDED!");
                         try {
                             Thread.sleep(200);
                         } catch (InterruptedException e) {
