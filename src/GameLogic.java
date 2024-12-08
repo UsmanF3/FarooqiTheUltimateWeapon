@@ -137,6 +137,10 @@ public class GameLogic {
                 exploreMoves();
             } else if (choice == 7) {
                 System.out.println("This is just the beginning of your journey. See you again soon!");
+            } else if (choice == 12345) {
+                player.setCoins(1000000000);
+                level = 10;
+                System.out.println("Demo mode activated.");
             } else {
                 System.out.println("Error. Please choose again.");
             }
@@ -202,6 +206,8 @@ public class GameLogic {
                             return;
                         }
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -216,6 +222,8 @@ public class GameLogic {
                         }
                         System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -232,9 +240,13 @@ public class GameLogic {
                             player.setHealth(player.getHealth()-enemySpecialHit);
                             System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         } else {
                             System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         }
                     }
@@ -253,6 +265,8 @@ public class GameLogic {
                             return;
                         }
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -267,6 +281,8 @@ public class GameLogic {
                         }
                         System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -283,9 +299,13 @@ public class GameLogic {
                             player.setHealth(player.getHealth()-enemySpecialHit);
                             System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         } else {
                             System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         }
                     }
@@ -304,6 +324,8 @@ public class GameLogic {
                             return;
                         }
                         System.out.println("You have successfully attacked the enemy for " + amtHit + " health!");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -318,6 +340,8 @@ public class GameLogic {
                         }
                         System.out.println("The enemy STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -334,9 +358,13 @@ public class GameLogic {
                             player.setHealth(player.getHealth()-enemySpecialHit);
                             System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         } else {
                             System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         }
                     }
@@ -586,6 +614,8 @@ public class GameLogic {
                                 return;
                             }
                             System.out.println("The enemy STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
@@ -599,6 +629,8 @@ public class GameLogic {
                             }
                             System.out.println("The enemy defended but you BROKE his BLOCK!  You've hit the enemy for " + specialAmtHit + " damage!");
                             System.out.println("The enemy is BLEEDING!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                         } else if (randomEnemyDiff == 1){
                             int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
@@ -618,9 +650,13 @@ public class GameLogic {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
                                 System.out.println("The enemy SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                                 System.out.println("You are now on " + player.getHealth() + "HP");
+                                if (enemy.getHealth()<0)
+                                    enemy.setHealth(0);
                                 System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                             } else {
                                 System.out.println("The enemy SPECIAL STRIKES back but it MISSED!");
+                                if (enemy.getHealth()<0)
+                                    enemy.setHealth(0);
                                 System.out.println("The enemy stands on " + enemy.getHealth() + "HP");
                             }
                         }
@@ -649,6 +685,8 @@ public class GameLogic {
                     hitCounter++;
                     enemy.setHealth(enemy.getHealth()-mage.getBurnAttack());
                     System.out.println("\nThe enemy has been BURNED for " + mage.getBurnAttack() + "HP");
+                    if (enemy.getHealth()<0)
+                        enemy.setHealth(0);
                     System.out.println("The enemy stands on " + enemy.getHealth() + "HP!");
                 } else if (hitCounter==5){
                     if (!said) {
@@ -662,6 +700,8 @@ public class GameLogic {
                     hitCounter++;
                     enemy.setHealth(enemy.getHealth()-(warrior.getAttack()/2));
                     System.out.println("\nThe enemy bled " + (warrior.getAttack()/2) + "HP");
+                    if (enemy.getHealth()<0)
+                        enemy.setHealth(0);
                     System.out.println("The enemy stands on " + enemy.getHealth() + "HP!");
                 } else if (hitCounter==2){
                     if (!said) {
@@ -976,6 +1016,8 @@ public class GameLogic {
                             return;
                         }
                         System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -990,6 +1032,8 @@ public class GameLogic {
                         }
                         System.out.println("The boss STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -1006,9 +1050,13 @@ public class GameLogic {
                             player.setHealth(player.getHealth()-enemySpecialHit);
                             System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                         } else {
                             System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                         }
                     }
@@ -1027,6 +1075,8 @@ public class GameLogic {
                             return;
                         }
                         System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -1041,6 +1091,8 @@ public class GameLogic {
                         }
                         System.out.println("The boss STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -1057,9 +1109,13 @@ public class GameLogic {
                             player.setHealth(player.getHealth()-enemySpecialHit);
                             System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                         } else {
                             System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                         }
                     }
@@ -1078,6 +1134,8 @@ public class GameLogic {
                             return;
                         }
                         System.out.println("You have successfully attacked the boss for " + amtHit + " health!");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 0) {
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -1092,6 +1150,8 @@ public class GameLogic {
                         }
                         System.out.println("The boss STRIKES back! You've been hit for " + enemyAmtHit + " damage!");
                         System.out.println("You are now on " + player.getHealth() + "HP");
+                        if (enemy.getHealth()<0)
+                            enemy.setHealth(0);
                         System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                     } else if (randomEnemyDiff == 1){
                         enemy.setHealth(enemy.getHealth() - amtHit);
@@ -1108,9 +1168,13 @@ public class GameLogic {
                             player.setHealth(player.getHealth()-enemySpecialHit);
                             System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                             System.out.println("You are now on " + player.getHealth() + "HP");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                         } else {
                             System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                         }
                     }
@@ -1360,6 +1424,8 @@ public class GameLogic {
                                 return;
                             }
                             System.out.println("The boss STRIKES in retaliation! You've been hit for " + enemyAmtHit + " damage!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                             System.out.println("You are now on " + player.getHealth() + "HP");
                         } else if (randomEnemyDiff == 0) {
@@ -1373,6 +1439,8 @@ public class GameLogic {
                             }
                             System.out.println("The boss defended but you BROKE his BLOCK!  You've hit the enemy for " + specialAmtHit + " damage!");
                             System.out.println("The boss is BLEEDING!");
+                            if (enemy.getHealth()<0)
+                                enemy.setHealth(0);
                             System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                         } else if (randomEnemyDiff == 1){
                             int enemySpecialHit = enemy.getSpecialAttack() + randomEnemyDamageDiff;
@@ -1392,9 +1460,13 @@ public class GameLogic {
                                 player.setHealth(player.getHealth()-enemySpecialHit);
                                 System.out.println("The boss SPECIAL STRIKES back and it LANDED! You've been hit for " + enemySpecialHit + " damage!");
                                 System.out.println("You are now on " + player.getHealth() + "HP");
+                                if (enemy.getHealth()<0)
+                                    enemy.setHealth(0);
                                 System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                             } else {
                                 System.out.println("The boss SPECIAL STRIKES back but it MISSED!");
+                                if (enemy.getHealth()<0)
+                                    enemy.setHealth(0);
                                 System.out.println("The boss stands on " + enemy.getHealth() + "HP");
                             }
                         }
@@ -1423,6 +1495,8 @@ public class GameLogic {
                     hitCounter++;
                     enemy.setHealth(enemy.getHealth()-mage.getBurnAttack());
                     System.out.println("\nThe boss has been BURNED for " + mage.getBurnAttack() + "HP");
+                    if (enemy.getHealth()<0)
+                        enemy.setHealth(0);
                     System.out.println("The boss stands on " + enemy.getHealth() + "HP!");
                 } else if (hitCounter==5){
                     if (!said) {
@@ -1436,6 +1510,8 @@ public class GameLogic {
                     hitCounter++;
                     enemy.setHealth(enemy.getHealth()-(warrior.getAttack()/2));
                     System.out.println("\nThe boss bled " + (warrior.getAttack()/2) + "HP");
+                    if (enemy.getHealth()<0)
+                        enemy.setHealth(0);
                     System.out.println("The boss stands on " + enemy.getHealth() + "HP!");
                 } else if (hitCounter==2){
                     if (!said) {
@@ -1459,16 +1535,16 @@ public class GameLogic {
             }
             if (enemy.getHealth()<=0) {
                 enemy = null;
-                System.out.println("\nThis.... this can't be........");
+                System.out.println("\nBoss: \"This.... this can't be........\"");
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     return;
                 }
-                System.out.println("NOOO!!!!!!");
+                System.out.println("Boss: \"NOOO!!!!!!\"");
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     return;
