@@ -768,7 +768,7 @@ public class GameLogic {
                     System.out.println("An extremely sharp sword paired with an extremely sturdy shield. Capable of inflicting much harm.");
                 }
             } else if (itmChoice==3) {
-                System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1822.");
+                System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1422.");
             } else if (itmChoice==4) {
                 if (bosskey!=null) {
                     if (!bossDefeated) {
