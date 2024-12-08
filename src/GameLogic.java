@@ -117,6 +117,7 @@ public class GameLogic {
     int choice = -1;
 
     private void chooseMenu() {
+        //menu logic
         while (choice != 7) {
             mainMenu();
             System.out.print("\nChoice #: ");
@@ -138,6 +139,7 @@ public class GameLogic {
             } else if (choice == 7) {
                 System.out.println("This is just the beginning of your journey. See you again soon!");
             } else if (choice == 12345) {
+                //demo mode cheat code
                 player.setCoins(1000000000);
                 level = 10;
                 System.out.println("Demo mode activated.");
@@ -186,6 +188,7 @@ public class GameLogic {
                 Thread.currentThread().interrupt();
                 return;
             }
+            //fighting logic
             boolean notCheese = true;
             int randomDiff = (int) (Math.random()*3) - 1;
             int randomEnemyDiff = (int) (Math.random()*3) - 1;
@@ -680,6 +683,7 @@ public class GameLogic {
                 Thread.currentThread().interrupt();
                 return;
             }
+            //special move's enduring effects
             if (used&&playerClass.equals("Mage")&&notCheese) {
                 if (hitCounter<=4) {
                     hitCounter++;
@@ -723,6 +727,7 @@ public class GameLogic {
                     }
                 }
             }
+            //checks for win or loss
             if (enemy.getHealth()<=0) {
                 enemy = null;
                 System.out.println("\nThe enemy is DEFEATED! Well Done!");
@@ -772,6 +777,7 @@ public class GameLogic {
     }
 
     private void openInventory() {
+        //displays interactive inventory with player
         System.out.println("--------Inventory--------");
         System.out.println("1. Coins: " + player.getCoins());
         if (playerClass.equals("Mage")) {
@@ -810,6 +816,7 @@ public class GameLogic {
             } else if (itmChoice==3) {
                 System.out.println("A new pocket watch. Don't remember how it got there.. The year reads: 1422.");
             } else if (itmChoice==4) {
+                //cutscenes when interacting with specific items
                 if (bosskey!=null) {
                     if (!bossDefeated) {
                         System.out.println("It's the ancient key the enemy dropped..");
@@ -936,6 +943,7 @@ public class GameLogic {
     }
 
     private void bossFight() {
+        //same fight logic for enemies, just with boss (a stronger enemy made with a separate constructor)
         int choice = -1;
         int hitCounter = 0;
         boolean used = false;
@@ -996,6 +1004,7 @@ public class GameLogic {
                 Thread.currentThread().interrupt();
                 return;
             }
+            //fighting logic
             boolean notCheese = true;
             int randomDiff = (int) (Math.random()*3) - 1;
             int randomEnemyDiff = (int) (Math.random()*3) - 1;
@@ -1599,6 +1608,7 @@ public class GameLogic {
     }
 
     private void upgradeCharacter() {
+        //upgrading player stats
         if (playerClass.equals("Mage")) {
             System.out.println("Attack Stat: " + mage.getAttack());
             System.out.println("Burn Stat: " + mage.getBurnAttack());
