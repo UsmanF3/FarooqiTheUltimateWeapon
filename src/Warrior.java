@@ -21,10 +21,6 @@ public class Warrior {
         this.attack = attack;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     public int getSpecialAttack() {
         return specialAttack;
     }
@@ -33,11 +29,4 @@ public class Warrior {
         this.specialAttack = specialAttack;
     }
 
-    public void upgradeAttack(int amtUpg) {
-        attack += amtUpg;
-    }
-
-    public void upgradeSpecialAttack(int amtUpg) {
-        specialAttack += amtUpg;
-    }
 }

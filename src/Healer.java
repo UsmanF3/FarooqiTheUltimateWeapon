@@ -21,16 +21,8 @@ public class Healer {
         this.attack = attack;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     public int getHeal() {
         return heal;
-    }
-
-    public void upgradeAttack(int amtUpg) {
-        attack += amtUpg;
     }
 
     public void setHeal(int heal) {

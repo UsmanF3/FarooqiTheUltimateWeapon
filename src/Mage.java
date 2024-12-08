@@ -22,10 +22,6 @@ public class Mage {
         this.attack = attack;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     public int getBurnAttack() {
         return burnAttack;
     }
@@ -34,11 +30,7 @@ public class Mage {
         this.burnAttack = burnAttack;
     }
 
-    public void upgradeAttack(int amtUpg) {
-        attack += amtUpg;
-    }
-
-    public void upgradeBurnAttack(int amtUpg) {
-        burnAttack += amtUpg;
+    public void setBurnAttack() {
+        burnAttack++;
     }
 }
