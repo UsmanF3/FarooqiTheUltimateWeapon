@@ -8,6 +8,12 @@ public class Mage {
         burnAttack = 1;
     }
 
+    public Mage(int attack) {
+        this.attack = attack;
+        burnAttack = 1;
+    }
+
+
     public int getAttack() {
         return attack;
     }

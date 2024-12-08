@@ -8,6 +8,11 @@ public class Warrior {
         specialAttack = 4;
     }
 
+    public Warrior(int attack) {
+        this.attack = attack;
+        specialAttack = 4;
+    }
+
     public int getAttack() {
         return attack;
     }

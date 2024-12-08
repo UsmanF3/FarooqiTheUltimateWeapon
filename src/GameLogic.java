@@ -21,6 +21,14 @@ public class GameLogic {
         ultBook = null;
     }
 
+    public GameLogic(int level) {
+        this.level = level;
+        name = "";
+        bossDefeated = false;
+        bosskey = null;
+        ultBook = null;
+    }
+
     Scanner scan = new Scanner(System.in);
 
     public void run() {

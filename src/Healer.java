@@ -8,6 +8,11 @@ public class Healer {
         heal = 3;
     }
 
+    public Healer(int attack) {
+        this.attack = attack;
+        heal = 3;
+    }
+
     public int getAttack() {
         return attack;
     }
