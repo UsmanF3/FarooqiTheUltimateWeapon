@@ -857,7 +857,14 @@ public class GameLogic {
                         Thread.currentThread().interrupt();
                         return;
                     }
-                    System.out.println("\nThe ultimate weapon is the strength, wisdom, and endurance you built on this journey.. In other words.. the ultimate weapon is.. ");
+                    System.out.println("\nThe ultimate weapon is the strength, wisdom, and endurance you built on this journey..");
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
+                    System.out.println("\nIn other words.. the ultimate weapon is.. ");
                     try {
                         Thread.sleep(5000);
                     } catch (InterruptedException e) {
@@ -872,6 +879,12 @@ public class GameLogic {
                         return;
                     }
                     System.out.println("\nThanks for playing!");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        return;
+                    }
                     break;
                 } else {
                     System.out.println("Invalid option!");
