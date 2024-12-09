@@ -1612,7 +1612,7 @@ public class GameLogic {
         System.out.println("Your current name is: " + player.getName());
         System.out.print("What would you like to change it to: ");
         player.setName(scan.nextLine());
-        System.out.println("You have successfully changed your name to: " + player.getName());
+        System.out.println("You have successfully changed your name to: " + (player.getName()).substring(0));
     }
 
     private void upgradeCharacter() {
